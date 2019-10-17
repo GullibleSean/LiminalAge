@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liminal.SDK.VR.GearVR</name>
+    </assembly>
+    <members>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatar">
+            <summary>
+            A device-specific implementation of <see cref="T:Liminal.SDK.VR.Avatars.IVRDeviceAvatar"/> to prepare an <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> for Samsung's GearVR hardware.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatar.Avatar">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> for this device avatar.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatar.IsControllerConnected(OVRInput.Controller)">
+            <summary>
+            Replacement for OVRInput.IsControllerConnected() that handles None properly
+            and works with masks as well as single enum values
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatar.InstantiateControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Instantiates a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for a limb.
+            </summary>
+            <param name="limb">The limb for the controller.</param>
+            <returns>The newly instantiated controller visual for the specified limb, or null if no controller visual was able to be created.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatar.DetectAndUpdateControllerStates">
+            <summary>
+            Detects and Updates the state of the controllers including the TouchPad on the GearVR headset
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.Avatar.HmdRecenterPolicy">
+            <summary>
+            Values for the recentering policy for the GearVR HMD.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Devices.GearVR.Avatar.HmdRecenterPolicy.Never">
+            <summary>
+            Never recenter the HMD.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Devices.GearVR.Avatar.HmdRecenterPolicy.OnControllerRecenter">
+            <summary>
+            Recenter the HMD whenever the user recenters the controller.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatarSettings">
+            <summary>
+            A component containing per-application settings for a <see cref="T:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatar"/>. Attach this component to your <see cref="T:Liminal.SDK.VR.Avatars.VRAvatar"/> to have the settings
+            applied when running on a GearVR device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRAvatarSettings.HmdRecenterPolicy">
+            <summary>
+            Determines if the HMD tracked camera should be recentered when the user recenters the controller.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRControllerInputVisual">
+            <summary>
+            Represents an input visual component on the GearVR Controller.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRControllerInputVisual.Color">
+            <summary>
+            Gets or sets the color of the input visual.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRControllerInputVisual.ResetColor">
+            <summary>
+            Resets the color override of the visual component.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRTrackedControllerProxy">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Avatars.IVRTrackedObjectProxy"/> for wrapping around a tracked GearVR controller.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRTrackedControllerProxy.#ctor(Liminal.SDK.VR.Avatars.IVRAvatar)">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.VR.Devices.GearVR.Avatar.GearVRTrackedControllerProxy"/> for the specified avatar and controller type.
+            </summary>
+            <param name="avatar">The avatar that owns the controller.</param>
+            <param name="controllerType">The controller type the proxy wraps.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.GearVRCameraRig">
+            <summary>
+            Specialisation of OVRCameraRig to support setup of the rig based on the VRAvatar setup
+            This is pretty clunky as it depends heavily on the implementation of OVRCameraRig. Will
+            need reviewing when updating OVR Utilities
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.GearVRController">
+            <summary>
+            Represents a GearVR controller.
+            <seealso href="https://developer.oculus.com/documentation/unity/latest/concepts/unity-ovrinput/"/>
+            An Oculus Touch controller can be used to emulate a GearVR controller in the Editor. At the time of
+            writing, button presses don't seem to be detected from Touch though.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.GearVRDevice">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.IVRDevice"/> for Samsung's GearVR hardware.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.GearVRDevice.IsOculusGo">
+            <summary>
+            Returns true if the device is an Oculus Go, rather than a GearVR device
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.GearVRDevice.#ctor">
+            <summary>
+            Create a GearVR device
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.GearVRGazePointer">
+            <summary>
+            A GearVR specific implementation of <see cref="T:Liminal.SDK.VR.Pointers.BasePointer"/> that uses the touchpad on the device's HMD for triggering interactions.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.GearVR.GearVRGazePointer.#ctor(Liminal.SDK.VR.Input.IVRInputDevice)">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.VR.Devices.GearVR.GearVRGazePointer"/> for the specified input device.
+            </summary>
+            <param name="inputDevice">The input device for the pointer.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.GearVRHeadset">
+            <summary>
+            The GearVR headset is also a controller and as such implments both <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> and <see cref="T:Liminal.SDK.VR.IVRHeadset"/>.
+            <see cref="T:Liminal.SDK.VR.Devices.GearVR.GearVRDevice"/> will use the same <see cref="!:GvrHeadset"/> instance for both <see cref="P:Liminal.SDK.VR.IVRDevice.Headset"/> and a single <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/>.
+            <seealso href="https://developer.oculus.com/documentation/unity/latest/concepts/unity-ovrinput/"/>
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.GearVRHeadset.Name">
+            <summary>
+            Gets the name of the headset device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.GearVRHeadset.ButtonCount">
+            <summary>
+            Gets the number of binary buttons available on the device.
+            This is all buttons that have a 'press' state and does not include axis-triggers or non-clickable touchpads/joysticks.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.GearVRHeadset.Hand">
+            <summary>
+            Returns <see cref="F:Liminal.SDK.VR.Input.VRInputDeviceHand.None"/>, as the GearVR Headset does not have a handedness.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.GearVR.GearVRInputDevice">
+            <summary>
+            An abstract base implementation of <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.GearVR.GearVRInputDevice.ControllerMask">
+            <summary>
+            Gets the OVR controller type assigned to this device.
+            Be careful when using OVRInput.Controller values. OVR APIs sometimes treat them as
+            bitfield masks, sometimes as simple enum values.
+            </summary>
+        </member>
+    </members>
+</doc>

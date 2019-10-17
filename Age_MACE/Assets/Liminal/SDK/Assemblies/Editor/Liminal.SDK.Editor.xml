@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liminal.SDK.Editor</name>
+    </assembly>
+    <members>
+        <member name="T:Liminal.SDK.Editor.Build.AppAssemblyBuilder">
+            <summary>
+            Builds and processes an Experience App assembly.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.AppAssemblyBuilder.Build(Liminal.SDK.Editor.Build.AppAssemblyBuilder.AssemblyBuildInfo,System.String)">
+            <summary>
+            Builds the application assembly with the specificed Assembly name, and writes it to the supplied output path.
+            </summary>
+            <param name="buildInfo">Assembly build information.</param>
+            <param name="outputPath">The output path of the assembly file.</param>
+        </member>
+        <member name="T:Liminal.SDK.Editor.Build.AppBuilder">
+            <summary>
+            Provides functionality for building a Liminal app.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Editor.Build.AppBuilder.AppDataName">
+            <summary>
+            The name of the application serialized data file.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Editor.Build.AppBuilder.AppAssemblyFileName">
+            <summary>
+            The output name of the application assembly.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.AppBuilder.BuildCurrentPlatform">
+            <summary>
+            Builds a Liminal Experience Application from the current scene and build target.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.AppBuilder.BuildStandalone">
+            <summary>
+            Builds a Liminal Experience Application from the current scene and standalone build target.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.AppBuilder.BuildAndroid">
+            <summary>
+            Builds a Liminal Experience Application from the current scene and the Android build target.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.AppBuilder.ListAssemblies">
+            <summary>
+            Lists the assemblies that will be included in the App build.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.AppBuilder.Build(Liminal.SDK.Build.AppBuildInfo)">
+            <summary>
+            Builds a Liminal App.
+            </summary>
+            <param name="buildInfo">The build information.</param>
+        </member>
+        <member name="F:Liminal.SDK.Editor.Build.BuildConsts.ProjectAssemblyName">
+            <summary>
+            The name of the default Unity project assembly.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Editor.Build.InvalidAppException">
+            <summary>
+            Thrown when an invalid application id is supplied.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.InvalidAppException.#ctor(System.String)">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.Editor.Build.InvalidAppException"/>.
+            </summary>
+            <param name="message">The message for the exception.</param>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.InvalidAppException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.Editor.Build.InvalidAppException"/>.
+            </summary>
+            <param name="id">The id that was supplied.</param>
+            <param name="message">The message for the exception.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.SceneBundleProcessor.Process(System.String)">
+            <summary>
+            Processes the scene asset bundle at the specified path.
+            </summary>
+            <param name="assetBundlPath">The path to the bundle.</param>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Build.SceneBundleProcessor.BinaryReplace(System.IO.FileStream,System.Byte[],System.IO.FileStream,System.Byte[])">
+            <summary>
+            Finds a sequence of bytes within an input stream and replaces the values in the target stream.
+            </summary>
+            <param name="sourceStream">The stream to read from</param>
+            <param name="sourceSeq">The sequence of bytes to find</param>
+            <param name="targetStream">The stream to write to</param>
+            <param name="targetSeq">The sequence of bytes to replace</param>
+        </member>
+        <member name="T:Liminal.SDK.Editor.Serialization.AppPacker">
+            <summary>
+            Packs a Liminal App asychronously.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Editor.Serialization.AppPacker.IsDone">
+            <summary>
+            Indicates if the packing operation has completed.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Editor.Serialization.AppPacker.IsFaulted">
+            <summary>
+            Indicates if the unpacking operation faulted with an exception.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Editor.Serialization.AppPacker.Exception">
+            <summary>
+            Gets the exception that was thrown if the unpacking operation faulted.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Serialization.AppPacker.PackAsync(Liminal.SDK.Serialization.AppPack,System.String)">
+            <summary>
+            Packs an AppPack object into a single, compressed file.
+            </summary>
+            <param name="pack">The AppPack to pack.</param>
+            <param name="outputPath">The output path.</param>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Serialization.AppPacker.Wait">
+            <summary>
+            Wait for the packing process to complete.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Editor.Serialization.AppSerializer">
+            <summary>
+            Serializes scene data for use in a Liminal AppPack.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Serialization.AppSerializer.#ctor(Liminal.SDK.Serialization.IAssemblyDataProvider,Liminal.SDK.Serialization.AssetLookup)">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.Editor.Serialization.AppSerializer"/>.
+            </summary>
+            <param name="assemblyDataProvider">The assembly data provider.</param>
+            <param name="assetLookup">The asset lookup to use.</param>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Serialization.AppSerializer.Serialize(UnityEngine.SceneManagement.Scene,System.String)">
+            <summary>
+            Serializes the specified scene to a JSON file at the specified output path.
+            </summary>
+            <param name="scene">The scene to serialize.</param>
+            <param name="outputPath">The path to write the serialized file to.</param>
+            <returns>The serialized asset.</returns>
+        </member>
+        <member name="T:Liminal.SDK.Editor.Serialization.AssetLookupBuilder">
+            <summary>
+            A utility class for building <see cref="T:Liminal.SDK.Serialization.AssetLookup"/> objects from a <see cref="T:UnityEngine.SceneManagement.Scene"/> input.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Serialization.AssetLookupBuilder.DestroyExisting(UnityEngine.SceneManagement.Scene)">
+            <summary>
+            Destroys any existing <see cref="T:Liminal.SDK.Serialization.AssetLookup"/> objects in the scene.
+            </summary>
+            <param name="scene">The scene to destroy any lookups from.</param>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Serialization.AssetLookupBuilder.Build(UnityEngine.SceneManagement.Scene)">
+            <summary>
+            Builds an <see cref="T:Liminal.SDK.Serialization.AssetLookup"/> from the specified scene.
+            </summary>
+            <param name="scene">The scene to build the look up from.</param>
+            <returns>The <see cref="T:Liminal.SDK.Serialization.AssetLookup"/> that was created.</returns>
+        </member>
+        <member name="T:Liminal.SDK.Editor.Utils.NumberUtils">
+            <summary>
+            A collection of utilities for working with number types.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Editor.Utils.NumberUtils.IntLength(System.Int32)">
+            <summary>
+            Returns the nubmer of digits in the supplied integer value.
+            </summary>
+            <param name="i">The integer value.</param>
+            <returns>The number of digits in <paramref name="i"/></returns>
+        </member>
+        <member name="T:Liminal.SDK.Build.AppBuildInfo">
+            <summary>
+            Represents a build profile
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Build.AppBuildInfo.Scene">
+            <summary>
+            The scene to build into the app package.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Build.AppBuildInfo.BuildTarget">
+            <summary>
+            The build target for the app package.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Build.AppBuildInfo.BuildTargetDevice">
+            <summary>
+            The build target device for app package
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Build.AppBuildInfo.BuildTargetDevices">
+            <summary>
+            The Targetted device for the app package
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Build.AppManifest">
+            <summary>
+            Describes a Liminal application for use with the build system.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Build.AppManifest.Id">
+            <summary>
+            Gets the unique identifier for the application.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Build.AppManifest.Version">
+            <summary>
+            Version number for the application. This should increment between releases and is used to ensure
+            the assembly name is unique to avoid clashes when loading multiple versions in the same Platform session.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Tools.AppTools">
+            <summary>
+            A set of tools for setting up and working with Liminal Experience App projects.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Tools.AppTools.CreateAppManifest">
+            <summary>
+            Creates or updates the Experience App manifest file. This file is required for the app to build correctly.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Tools.AppTools.SetupAppScene">
+            <summary>
+            Sets up the current scene to be a compatible Liminal Experience App.
+            </summary>
+        </member>
+    </members>
+</doc>

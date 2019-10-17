@@ -1,0 +1,3478 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liminal.SDK</name>
+    </assembly>
+    <members>
+        <member name="F:Liminal.SDK.Core.LiminalRenderQueue.Fader">
+            <summary>
+            Screen fader will try to not to obscure materials with a higher RenderQueue 
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Core.ExperienceApp">
+            <summary>
+            The entry-point for an Experience App. A GameObject with this component is required to be at the root of your scene, and all your scene objects should be nested below it.
+            The master app will search for this component when initializing your app. If it is not found or incorrectly configured, your experience app will not work.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Core.ExperienceApp.FadeSettings">
+            <summary>
+            Contains settings for controlling a full screen fade.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.Instance">
+            <summary>
+            Gets the current <see cref="T:Liminal.SDK.Core.ExperienceApp"/> instance.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.AssetBundle">
+            <summary>
+            Gets the <see cref="T:UnityEngine.AssetBundle"/> that the experience was loaded from.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.IsEmulator">
+            <summary>
+            Indicates if the application is running as an emulator. This will be true whenever you are running the app inside
+            the Unity editor during development, and false whenever the app is running inside the Liminal app.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.IsEnding">
+            <summary>
+            Indicates if the application is in an ending state and shutting down.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.Core.ExperienceApp.Initializing">
+            <summary>
+            Raised when the <see cref="T:Liminal.SDK.Core.ExperienceApp"/> is initializing.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.Core.ExperienceApp.ShuttingDown">
+            <summary>
+            Raised when the <see cref="T:Liminal.SDK.Core.ExperienceApp"/> is shutting down.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Core.ExperienceApp.End">
+            <summary>
+            Ends the experience and returns to the Liminal app.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.FadeInSettings">
+            <summary>
+            Gets the settings for the fade in transition when the app begins.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.FadeOutSettings">
+            <summary>
+            Gets the settings for the fade out transition when the app ends.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Core.ExperienceApp.RootGameObjects">
+            <summary>
+            Gets the list of GameObjects on the root of the scene.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.AppPackPlatform">
+            <summary>
+            The platforms Liminal AppPack files can support.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.AppPackPlatform.Unknown">
+            <summary>
+            Unknown platform. If this value is detected or used, an exception should be thrown.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.AppPackPlatform.WindowsStandalone">
+            <summary>
+            Windows standalone platform.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.AppPackPlatform.Android">
+            <summary>
+            Android platform.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.AppPack">
+            <summary>
+            A class representing the Liminal AppPack file format.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.AppPack.Version">
+            <summary>
+            The current version number for AppPack files.
+            </summary>
+            VERSION 1 - Original
+            VERSION 2 - Add ApplicationVersion
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppPack.Identifier">
+            <summary>
+            The file identifier for AppPack files.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppPack.TargetPlatform">
+            <summary>
+            The target platform the application is built for.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppPack.ApplicationId">
+            <summary>
+            The id of the application packed into the AppPack.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppPack.Assemblies">
+            <summary>
+            The raw byte array for the application assembly.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppPack.SceneBundle">
+            <summary>
+            The raw byte array for the application scene bundle.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.AppUnpacker">
+            <summary>
+            Unpacks a Liminal App asynchronously. Due to the LZMA compression applied to AppPack files, unpacking can take time.
+            The unpacker always runs asychronously on a separate thread.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppUnpacker.IsDone">
+            <summary>
+            Indicates if the packing operation has completed.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppUnpacker.IsFaulted">
+            <summary>
+            Indicates if the unpacking operation faulted with an exception.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppUnpacker.Exception">
+            <summary>
+            Gets the exception that was thrown if the unpacking operation faulted.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AppUnpacker.Data">
+            <summary>
+            If the unpacking operation was successfully completed, returns the unpacked data.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AppUnpacker.UnpackAsync(System.Byte[])">
+            <summary>
+            Unpacks a raw compressed AppPack byte array.
+            </summary>
+            <param name="rawData">The raw compressed raw byte array to unpack.</param>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AppUnpacker.Wait">
+            <summary>
+            Wait for the unpacking process to complete.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.AssemblyDataProvider">
+            <summary>
+            Provides assembly name information.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AssemblyDataProvider.Name">
+            <summary>
+            Gets the name of the assembly.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.AssemblyDataProvider.FullName">
+            <summary>
+            Gets the full name of the assembly.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AssemblyDataProvider.#ctor(System.String)">
+            <summary>
+            Creates an <see cref="T:Liminal.SDK.Serialization.AssemblyDataProvider"/> with a specific assembly name.
+            </summary>
+            <param name="name">The assembly name.</param>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AssemblyDataProvider.#ctor(System.Reflection.Assembly)">
+            <summary>
+            Creates an <see cref="T:Liminal.SDK.Serialization.AssemblyDataProvider"/> with a specific assembly.
+            </summary>
+            <param name="asm">The assembly.</param>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.AssetLookup">
+            <summary>
+            Stores references to assets within an application scene and allocates a unique identifier to each asset.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AssetLookup.GetId(UnityEngine.Object)">
+            <summary>
+            Gets the id of the specified asset.
+            </summary>
+            <param name="asset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AssetLookup.AddAsset(UnityEngine.Object)">
+            <summary>
+            Adds an asset to the lookup and returns the id. If the asset already exists in the lookup, the asset is not added again,
+            and the allocated id is returned.
+            </summary>
+            <param name="asset">The asset to add to the lookup.</param>
+            <returns>The allocated id of the asset.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.AssetLookup.GetAsset(System.Int32)">
+            <summary>
+            Gets the asset with the specified id.
+            </summary>
+            <param name="id">The id of the asset.</param>
+            <returns>The asset with the specified id.</returns>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.IAssemblyDataProvider">
+            <summary>
+            An interface for providing assembly information to the serialization framework.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.IAssemblyDataProvider.Name">
+            <summary>
+            Gets the name of the assembly.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Serialization.IAssemblyDataProvider.FullName">
+            <summary>
+            Gets the full name of the assembly.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.Deserialize(UnityEngine.Object,UnityEngine.Object)">
+            <summary>
+            Clones values from types marked with SerializableAttribute within the app assembly, from the source object into the destination object.
+            </summary>
+            <param name="source">The source object.</param>
+            <param name="dest">The destination object.</param>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.CanAssignDirectToField(System.Type)">
+            <summary>
+            Indicates if valeus of the supplied type can be assigned directly to a field.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>A boolean indicating if values of <paramref name="type"/> can be assigned directly to a field.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.GetGameObjectFromPath(UnityEngine.GameObject,System.Int32[])">
+            <summary>
+            Finds the GameObject at the index path, relative to the supplied root GameObject.
+            </summary>
+            <param name="root">The root GameObject.</param>
+            <param name="path">The path to the final GameObject, relative to <paramref name="root"/>.</param>
+            <returns>The GameObject at the specified path relative to the supplied root GameObject.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.GetGameObjectPath(UnityEngine.GameObject,UnityEngine.GameObject)">
+            <summary>
+            Gets the child index path of <paramref name="child"/> relative to <paramref name="root"/>.
+            </summary>
+            <param name="root">The root GameObject.</param>
+            <param name="child">The child GameObject.</param>
+            <returns>The index path to <paramref name="child"/>, relative to <paramref name="root"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.GetComponentIndex(UnityEngine.Component)">
+            <summary>
+            Gets the index of a specified component in its owning GameObject.
+            </summary>
+            <param name="component">The component.</param>
+            <returns>The index of the component within its owning GameObject.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.GetComponentAtIndex(UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Gets the <see cref="T:UnityEngine.Component"/> at the specified index on <paramref name="gameObject"/>.
+            </summary>
+            <param name="gameObject">The GameObject to retrieve the Component from.</param>
+            <param name="index">The index of the Component within the GameObject to retrieve.</param>
+            <returns>The Component at the specified index on <paramref name="gameObject"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.Instantiator.IsDescendant(UnityEngine.GameObject,UnityEngine.GameObject)">
+            <summary>
+            Indicates if the <paramref name="child"/> is a descendant of <paramref name="root"/>.
+            </summary>
+            <param name="root">The root GameObject.</param>
+            <param name="child">The child GameObject.</param>
+            <returns>A boolean indicating if <paramref name="child"/> is a descendant of <paramref name="root"/>.</returns>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.SerializationUtils">
+            <summary>
+            A collection of utilities to aid in serialization/deserialization of data from loaded experiences.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.AddGlobalSerializableTypes(System.String)">
+            <summary>
+            Adds serializable types from the specified loaded assembly to the global type list.
+            </summary>
+            <param name="asmName">The name of the loaded assembly to add serializable types from.</param>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.AddGlobalSerializableTypes(System.Reflection.Assembly)">
+            <summary>
+            Adds serializable types from the specified assembly to the global type list.
+            </summary>
+            <param name="asm">The Assembly to add serializable types from.</param>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.ClearGlobalSerializableTypes">
+            <summary>
+            Clears all types from the global serializable types list.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.GetFieldFromHierarchy(System.Type,System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Gets a field from the hierarchy of the suppled type's inheritance chain.
+            </summary>
+            <param name="type">The type to retrieve the field from.</param>
+            <param name="fieldName">The name of the field to retrieve.</param>
+            <param name="bindingFlags">The binding flags of the fields to check.</param>
+            <returns>The first field with the specified name from the type's inheritance chain, or null if no field with the supplied name exists.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Liminal.SDK.Serialization.SerializationUtils.GetFieldsHierarchy(System.Type,System.Reflection.BindingFlags)" -->
+        <!-- Badly formed XML comment ignored for member "M:Liminal.SDK.Serialization.SerializationUtils.GetUnitySerializableFieldsHierarchy(System.Type)" -->
+        <!-- Badly formed XML comment ignored for member "M:Liminal.SDK.Serialization.SerializationUtils.GetUnitySerializableFields(System.Type)" -->
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsUnitySerializableField(System.Reflection.FieldInfo)">
+            <summary>
+            Indicates if the specified field is considered serializable by Unity.
+            </summary>
+            <param name="field">The FieldInfo value.</param>
+            <returns>A boolean indicating if the specified field is considered serializable by Unity.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.HasSerializableAttribute(System.Type)">
+            <summary>
+            Indicates if the type is considered serializable. Types are considered serializable if they explicitly declare <see cref="T:System.SerializableAttribute"/>.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>A boolean indicating if the type is considered serializable.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsSerializable(System.Reflection.FieldInfo)">
+            <summary>
+            Indicates if the field is considered serializable. Public fields are always serializable, so long as they are not marked with <see cref="T:System.NonSerializedAttribute"/>.
+            All other access levels are only serializable if the explicitly declare the <see cref="T:UnityEngine.SerializeField"/> attribute.
+            </summary>
+            <param name="field">The field to check.</param>
+            <returns>A boolean indicating if the field is considered serializable.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsUnityEventType(System.Type)">
+            <summary>
+            Indicates if the supplied type inherits from <see cref="T:UnityEngine.Events.UnityEventBase"/>.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>A boolean indicating if the supplied type inherits from <see cref="T:UnityEngine.Events.UnityEventBase"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsSameModuleAsUnityEvent(System.Type)">
+            <summary>
+            Indicates if the supplied type is from the same module as UnityEventBase
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsSameModule(System.Type,System.Type)">
+            <summary>
+            Indicates if typeA and typeB comes from the same module
+            </summary>
+            <param name="typeA"></param>
+            <param name="typeB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsUnityObjectType(System.Type)">
+            <summary>
+            Indicates if the supplied type inherits from <see cref="T:UnityEngine.Object"/>.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>A boolean indicating if the supplied type inherits from <see cref="T:UnityEngine.Object"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsUnityObjectCollectionType(System.Type)">
+            <summary>
+            Indicates if the specified type is an Array or List of Unity objects.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>A boolean indicating if the specified type is an Array or List of Unity objects.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.IsUnityObjectTypeOrCollectionType(System.Type)">
+            <summary>
+            Indicates if the specified type is a Unity Object type, or an Array or List of Unity objects.
+            </summary>
+            <param name="type">The type to check.</param>
+            <returns>A boolean indicating if the specified type is a Unity Object type, or an Array or List of Unity objects,</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.BuildSerializableTypeSet(System.String)">
+            <summary>
+            Builds a <see cref="T:System.Collections.Generic.HashSet`1"/> of <see cref="T:System.Type"/> objects from the specified loaded assembly that are either Unity objects or have the Serializable attribute declared.
+            </summary>
+            <param name="asmName">The name of the loaded assembly to build the hashset from.</param>
+            <returns>The hashset of types that was created.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.SerializationUtils.BuildSerializableTypeSet(System.Reflection.Assembly)">
+            <summary>
+            Builds a <see cref="T:System.Collections.Generic.HashSet`1"/> of <see cref="T:System.Type"/> objects from the specified  assembly that are either Unity objects or have the Serializable attribute declared.
+            </summary>
+            <param name="asmName">The assembly to build the hashset from.</param>
+            <returns>The hashset of types that was created.</returns>
+        </member>
+        <member name="T:Liminal.SDK.Serialization.UnityJsonContractResolver">
+            <summary>
+            Provides resolution for JSON contracts on Unity serializable fields.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.UnityJsonContractResolver._unityEventFieldNames">
+            <summary>
+            The fields from UnityEventBase types that we want to force to be serialized. These values are required
+            to reconstruct events when the objects are deserialized later.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.UnityJsonContractResolver._assemblyUnityEventFieldNames">
+            <summary>
+            The fields from UnityEventBase types that we will be modified to match the assembly
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.Serialization.UnityJsonContractResolver._fullTypes">
+            <summary>
+            The collection of types that are fully serialized regardless of attribute settings. This is required because some
+            Unity types are not supported with JSON conversion with JSON.NET.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Serialization.UnityJsonContractResolver.#ctor(Liminal.SDK.Serialization.IAssemblyDataProvider,Liminal.SDK.Serialization.AssetLookup)">
+            <summary>
+            Creates a new UnityJsonContractResolver using the specified asset lookup table.
+            </summary>
+            <param name="assemblyDataProvider">The assembly data provider for the project assembly.</param>
+            <param name="assetLookup">The <see cref="T:Liminal.SDK.Serialization.AssetLookup"/> to use when reading or writing object references.</param>
+        </member>
+        <member name="T:Liminal.SDK.Collections.ListPool`1">
+            <summary>
+            <para>This class provides an interface for acquiring a <see cref="T:System.Collections.Generic.List`1"/> instance from a pool. If a list is available in the pool, it will
+            be returned via the <see cref="M:Liminal.SDK.Collections.ListPool`1.Get"/> method, otherwise a new <see cref="T:System.Collections.Generic.List`1"/> instance will be created. When you are finished with
+            the list, it can be returned to the pool via <see cref="M:Liminal.SDK.Collections.ListPool`1.Release(System.Collections.Generic.List{`0}@)"/>. The <c>ref</c> keyword allows the <see cref="M:Liminal.SDK.Collections.ListPool`1.Release(System.Collections.Generic.List{`0}@)"/>
+            method to clear the list reference for you automatically.
+            </para>
+            </summary>
+            <remarks>
+            The <see cref="T:Liminal.SDK.Collections.PooledList`1"/> struct provides a friendly interface for accessing lists from <see cref="T:Liminal.SDK.Collections.ListPool`1"/> via the <c>using</c> syntax.
+            </remarks>
+            <typeparam name="T">The type of the list pool.</typeparam>
+            <example>
+            An example of how to use the <see cref="T:Liminal.SDK.Collections.ListPool`1"/> class.
+            <code>
+            var myIntList = ListPool&lt;int&gt;.Get();
+            myIntList.Add(100);
+            // .. Do something with the list contents ..
+            ListPool&lt;int&gt;.Release(ref myIntList);
+            System.Diagnostics.Debug.Assert(myIntList == null);
+            </code>
+            </example>
+        </member>
+        <member name="P:Liminal.SDK.Collections.ListPool`1.PoolCount">
+            <summary>
+            Gets the number of lists available in the pool.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Collections.ListPool`1.Get">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> from the pool, or creates a new one if the pool is exhausted.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> from the pool, or a new list if the pool is exhausted.</returns>
+            <remarks>Make sure that you return the list to the pool using <see cref="M:Liminal.SDK.Collections.ListPool`1.Release(System.Collections.Generic.List{`0}@)"/>.</remarks>
+        </member>
+        <member name="M:Liminal.SDK.Collections.ListPool`1.Release(System.Collections.Generic.List{`0}@)">
+            <summary>
+            Clears and releases a <see cref="T:System.Collections.Generic.List`1"/> to the pool. The reference is also set to null.
+            </summary>
+            <param name="list">The <see cref="T:System.Collections.Generic.List`1"/> to clear and return to the pool.</param>
+        </member>
+        <member name="T:Liminal.SDK.Collections.PooledList`1">
+            <summary>
+            A disposable struct that allows access to <see cref="T:Liminal.SDK.Collections.ListPool`1"/> instances via the <c>using</c> syntax.
+            </summary>
+            <typeparam name="T">The type of the list</typeparam>
+            <example>
+            An example of how to use a disposable PooledList struct.
+            <code>
+            using (var pList = new PooledList&lt;int&gt;())
+            {
+                var list = pList.List;
+                // .. Do something with list ..
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:Liminal.SDK.Collections.PooledList`1.List">
+            <summary>
+            Gets the pooled list assigned assigned to the struct.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Collections.PooledList`1.Dispose">
+            <summary>
+            Disposes of the pooled list, returning it to the pool.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Extensions.ReflectionExtensions">
+            <summary>
+            A collection of extension methods for working with reflection.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.ReflectionExtensions.GetLoadedAssembly(System.AppDomain,System.String)">
+            <summary>
+            Gets the the assembly with the specified name, if it is loaded into the AppDomain.
+            </summary>
+            <param name="appDomain">The AppDomain to retrieve the Assembly from.</param>
+            <param name="name">The name of the Assembly to retrieve.</param>
+            <returns>The Assembly with the specified name, or null if no assembly with the supplied name is loaded into the AppDomain.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.GameObjectExtensions.GetOrAddComponent``1(UnityEngine.GameObject)">
+            <summary>
+            Gets the component of the specified type from a GameObject. If the component does not exist, it will be added
+            to the GameObject and then returned.
+            </summary>
+            <typeparam name="T">The type of the component</typeparam>
+            <param name="gameObject">The GameObject to get the component from, or add the component to.</param>
+            <returns>The component of the specified type.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Liminal.SDK.Extensions.GameObjectExtensions.GetOrAddComponent(UnityEngine.GameObject,System.Type)" -->
+        <member name="M:Liminal.SDK.Extensions.GameObjectExtensions.HasComponent``1(UnityEngine.GameObject)">
+            <summary>
+            Returns a boolean value indicating if the specified GameObject has a component of the specified type.
+            </summary>
+            <typeparam name="T">The component type</typeparam>
+            <param name="gameObject">The GameObject to operate on.</param>
+            <returns>A boolean value indicating if the supplied <see cref="T:UnityEngine.GameObject"/> has a component of the specified type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.TransformExtensions.Identity(UnityEngine.Transform)">
+            <summary>
+            Resets the transform to its identity state, where <see cref="P:UnityEngine.Transform.localPosition"/> is equal to <see cref="P:UnityEngine.Vector3.zero"/>, <see cref="P:UnityEngine.Transform.localRotation"/> is equal to
+            <see cref="P:UnityEngine.Quaternion.identity"/> and <see cref="P:UnityEngine.Transform.localScale"/> is equal to <see cref="P:UnityEngine.Vector3.one"/>.
+            </summary>
+            <param name="transform">The transform to reset to its identity state.</param>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.TransformExtensions.SetParentAndIdentity(UnityEngine.Transform,UnityEngine.Transform)">
+            <summary>
+            Sets the parent of the transform and resets it to its identity state once it has been reparented. This is synonymous with calling <see cref="M:UnityEngine.Transform.SetParent(UnityEngine.Transform)"/> followed
+            by <see cref="M:Liminal.SDK.Extensions.TransformExtensions.Identity(UnityEngine.Transform)"/>.
+            </summary>
+            <param name="transform">The transform to reparent.</param>
+            <param name="parent">The new parent of <paramref name="transform"/></param>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.TransformExtensions.GetOrAddComponent``1(UnityEngine.Transform)">
+            <summary>
+            Returns the component of the specified type on the transform, or if the component does not exist, adds it to the transform's GameObject and then returns the new component.
+            </summary>
+            <typeparam name="T">The component type</typeparam>
+            <param name="transform">The transform to retrieve the component from or add the component to.</param>
+            <returns>The existing component of the specified type on <paramref name="transform"/>, or the newly created component if one does not already exist.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Liminal.SDK.Extensions.TransformExtensions.GetOrAddComponent(UnityEngine.Transform,System.Type)" -->
+        <member name="M:Liminal.SDK.Extensions.TransformExtensions.HasComponent``1(UnityEngine.Transform)">
+            <summary>
+            Returns a boolean value indicating if the specified Transform has a component of the specified type.
+            </summary>
+            <typeparam name="T">The component type</typeparam>
+            <param name="transform">The transform to operate on.</param>
+            <returns>A boolean value indicating if the supplied <see cref="T:UnityEngine.Transform"/> has a component of the specified type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.TransformExtensions.IsDescendentOf(UnityEngine.Transform,UnityEngine.Transform)">
+            <summary>
+            Indicates if this Transform is a descendent of the supplied ancestor Transform.
+            </summary>
+            <param name="transform">The transform.</param>
+            <param name="ancestor">The ancestor transform.</param>
+            <returns>A boolean value indicating if this Transform is a descendent of the supplied ancestor Transform.</returns>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.Vector3Extensions.GetXZ(UnityEngine.Vector3)">
+            <summary>
+            Returns a new Vector3 that contains only the X and Z components of the original Vector3.
+            </summary>
+            <param name="vector">The original Vector3.</param>
+            <returns>A new Vector3 that contains only the X and Z components of the input Vector3</returns>
+        </member>
+        <member name="M:Liminal.SDK.Extensions.Vector3Extensions.GetXZNormalized(UnityEngine.Vector3)">
+            <summary>
+            Returns a new, normalized Vector3 that contains only the X and Z components of the original Vector3.
+            </summary>
+            <param name="vector">The original Vector3.</param>
+            <returns>A new, normalized Vector3 that contains only the X and Z components of the input Vector3</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual">
+            <summary>
+            An interface for controller visuals.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.transform">
+            <summary>
+            Gets the GameObject for the controller visual.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.gameObject">
+            <summary>
+            Gets the GameObject for the controller visual.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.PointerVisual">
+            <summary>
+            Gets or sets the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointerVisual"/> for the controller.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.Nodes">
+            <summary>
+            Gets the enumerable collection of controller nodes belonging to the visual.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.Inputs">
+            <summary>
+            Gets the enumerable collection of controller input visuals belonging to the visual.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.GetNode(System.String)">
+            <summary>
+            Gets the the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode"/> with the name specified by <paramref name="nodeName"/>.
+            </summary>
+            <param name="nodeName">The name of the node.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode"/> with the name specified by <paramref name="nodeName"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual.GetInput(System.String)">
+            <summary>
+            Gets the the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> with the name specified by <paramref name="inputName"/>.
+            </summary>
+            <param name="inputName">The name of the input component.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> with the name specified by <paramref name="inputName"/>.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisualExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual"/> interface.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisualExtensions.GetNodeTransform(Liminal.SDK.VR.Avatars.Controllers.IVRControllerVisual,System.String)">
+            <summary>
+            Gets the transform for the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode"/> on this controller visual with specified name.
+            </summary>
+            <param name="controllerVisual">The controller visual.</param>
+            <param name="nodeName">The name of the node to retrieve the transform of.</param>
+            <returns>The transform for the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode"/> on this controller visual with specified name, or null if no node is found.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual">
+            <summary>
+            Used to represent an input component visual (buttons, touchpads, triggers, etc) on a VR Controller device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.InputName">
+            <summary>
+            Gets the input name the visual component relates to. This should correspond to <see cref="T:Liminal.SDK.VR.Input.VRButton"/> or <see cref="T:Liminal.SDK.VR.Input.VRAxis"/> values.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.Color">
+            <summary>
+            Gets or sets the color of the input visual.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.TipAlignment">
+            <summary>
+            Gets the direction of tooltips displayed on this visual component.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.TipVisible">
+            <summary>
+            Indicates if the tooltip for this input visual is currently visible.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.ResetColor">
+            <summary>
+            Resets the color override of the visual component.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.ShowTip">
+            <summary>
+            Displays a tooltip for this input visual.
+            </summary>
+            <returns>The tooltip GameObject instance, or null if no instance was able to be created.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.ShowTip``1">
+            <summary>
+            Displays a tooltip for this input visual and returns a component of the specified by <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of the Component to retrieve from the tip.</typeparam>
+            <returns>The Component of the type specified by <typeparamref name="T"/> on the tooltip GameObject instance,
+            or null if no instance was able to be created or the instance does not have a component of the specified type.
+            </returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.HideTip">
+            <summary>
+            Hides the tooltip for this input visual, if one exists.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisualExtensions">
+            <summary>
+            Extension methods for <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> components.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisualExtensions.FadeColor(Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual,UnityEngine.Color,System.Single,UnityEngine.AnimationCurve)">
+            <summary>
+            Fades the color of a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> over time.
+            </summary>
+            <param name="inputVisual">The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> to fade.</param>
+            <param name="color">The color to fade to.</param>
+            <param name="duration">The duration of the fade, in secondse.</param>
+            <param name="curve">The curve of the fade over time.</param>
+            <returns>An awaitable Coroutine.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisualExtensions.PulseColor(Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual,UnityEngine.Color,System.Int32,System.Single,UnityEngine.AnimationCurve)">
+            <summary>
+            Pulses the color of a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> over time.
+            </summary>
+            <param name="inputVisual">The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> to pulse.</param>
+            <param name="color">The color to fade to.</param>
+            <param name="count">The number of times to pulse within <paramref name="duration"/>.</param>
+            <param name="duration">The duration of the pulse, in seconds.</param>
+            <param name="curve">The curve of the fade over time.</param>
+            <returns>An awaitable Coroutine.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisualExtensions.PulseColor(Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual,UnityEngine.Color,System.Single,UnityEngine.AnimationCurve)">
+            <summary>
+            Pulses the color of a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> at a specific rate indefinitely.
+            </summary>
+            <param name="inputVisual">The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual"/> to pulse.</param>
+            <param name="color">The color to fade to.</param>
+            <param name="rate">The rate of each pulse, in seconds.</param>
+            <param name="curve">The curve of the fade over time.</param>
+            <returns>An awaitable Coroutine.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode">
+            <summary>
+            A node that when assigned to child objects <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> will allow for easy attachment points on the controller in a generic way.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode.Tip">
+            <summary>
+            The name of the controller node at the top of the controller.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode.Base">
+            <summary>
+            The name of the controller node at the base of the controller.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode.Center">
+            <summary>
+            The name of the controller node at the center of the controller body.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerNode.NodeName">
+            <summary>
+            Gets the name of the node.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerTip">
+            <summary>
+            A basic tooltip visual.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTip.Label">
+            <summary>
+            Gets or sets the label displayed on the tooltip.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment">
+            <summary>
+            An enumeration of controller tooltip alignments.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment.Left">
+            <summary>
+            The tooltip is aligned to the left.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment.Right">
+            <summary>
+            The tooltip is aligned to the right.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment.Forward">
+            <summary>
+            The tooltip is aligned forward.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment.Backward">
+            <summary>
+            The tooltip is aligned backward.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment.Up">
+            <summary>
+            The tooltip is aligned upward.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment.Down">
+            <summary>
+            The tooltip is aligned downward.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs">
+            <summary>
+            A lookup component for controller tooltip prefabs. Add your custom tooltip GameObject to this lookup to have them displayed when <see cref="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerInputVisual.ShowTip"/> is used.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.LeftPrefab">
+            <summary>
+            Gets or sets left-aligned tooltip prefab.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.RightPrefab">
+            <summary>
+            Gets or sets right-aligned tooltip prefab.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.ForwardPrefab">
+            <summary>
+            Gets or sets forward-aligned tooltip prefab.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.BackwardPrefab">
+            <summary>
+            Gets or sets backward-aligned tooltip prefab.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.UpPrefab">
+            <summary>
+            Gets or sets upward-aligned tooltip prefab.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.DownPrefab">
+            <summary>
+            Gets or sets downward-aligned tooltip prefab.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Controllers.VRControllerTipPrefabs.GetPrefab(Liminal.SDK.VR.Avatars.Controllers.VRControllerTipAlignment)">
+            <summary>
+            Gets the controller tooltip prefab for the direction specified by <paramref name="direction"/>.
+            </summary>
+            <param name="direction">The direction of the tip prefab to retrieve.</param>
+            <returns>The tooltip prefab for the specified direction.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual">
+            <summary>
+            Represents a VR controller visual object that can be bound to a <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarController"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual.PointerVisual">
+            <summary>
+            Gets or sets the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointerVisual"/> for the controller.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Events.IAnchorableAnchored">
+            <summary>
+            An interface that can be implemented by components that want to receive OnAnchored events from <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> components.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Events.IAnchorableAnchored.OnAnchored(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Executed when an <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> component on the same object dispatched and OnAnchored event.
+            </summary>
+            <param name="limb">The limb that object was anchored to.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Events.IAnchorableUnanchored">
+            <summary>
+            An interface that can be implemented by components that want to receive OnUnanchored events from <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> components.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Events.IAnchorableUnanchored.OnUnanchored(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Executed when an <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> component on the same object dispatched and OnUnanchored event.
+            </summary>
+            <param name="limb">The limb that object was unanchored from.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Extensions.GazeInputActivationPolicy">
+            <summary>
+            Policy values for determine when gaze input is enabled.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Extensions.GazeInputActivationPolicy.Never">
+            <summary>
+            Never activate gaze input.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Extensions.GazeInputActivationPolicy.NoControllers">
+            <summary>
+            Only activate gaze input if no controllers are connected to the device.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Extensions.GazeInputActivationPolicy.Always">
+            <summary>
+            Always allow gaze input.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Extensions.GazeInput">
+            <summary>
+            An avatar extension that automatically manages gaze input.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Extensions.GazeInput.PointerVisual">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Pointers.BasePointerVisual"/> assigned to the component.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Extensions.GazeInput.ActivationPolicy">
+            <summary>
+            Gets or sets the activation policy for gaze controls.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Extensions.GazeInput.HoverDelay">
+            <summary>
+            Gets or set the duration the pointer must be hovered over an object before the interaction timer begins. Applies only to timed gaze pointers.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Extensions.GazeInput.HoverDuration">
+            <summary>
+            Gets or sets the duration the pointer must be hovered over an object before interaction is triggered. Applies only to timed gaze pointers.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Extensions.GazeInput.Initialize(Liminal.SDK.VR.Avatars.IVRAvatar)">
+            <summary>
+            Initializes the avatar extension.
+            </summary>
+            <param name="avatar">The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> the extension is bound to.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Extensions.GazeInput.Activate">
+            <summary>
+            Activates gaze control for the avatar.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Extensions.GazeInput.Deactivate">
+            <summary>
+            Deactivates gaze control for the avatar.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Extensions.GazeInput.HandsActive">
+            <summary>
+            Return if hands are active for the avatar
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Extensions.IVRAvatarExtension">
+            <summary>
+            An interface for all <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> extension components.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Extensions.IVRAvatarExtension.Initialize(Liminal.SDK.VR.Avatars.IVRAvatar)">
+            <summary>
+            [Internal use] Initializes the extension component for the specified avatar.
+            </summary>
+            <param name="avatar">The avatar that owns the extension component.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.ActivatePointerOnAnchor">
+            <summary>
+            When an object with this component attached becomes anchored to a limb, the component will activates the specified <see cref="T:Liminal.SDK.VR.Pointers.IVRPointerVisual"/>.
+            When the object is unanchored, the pointer visual will be unbound and deactivated.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable">
+            <summary>
+            A component for allowing objects to be anchorable to <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> limbs.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable.AnchorableEvents">
+            <summary>
+            A collection of events for <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> objects.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.AnchorableEvents.OnAnchored">
+            <summary>
+            Raise when the object is anchored to the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.AnchorableEvents.OnUnanchored">
+            <summary>
+            Raised when the object is unanchored from the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.AttachedLimb">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> the object is currently attached to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.AttachedAvatar">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> the object is currently attached to. This is a shortcut to <see cref="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Avatar"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.IsAnchored">
+            <summary>
+            Indicates if the object is currently anchored to any limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.AnchorPivot">
+            <summary>
+            Gets or sets the anchor pivot for the object. This transform will be matched to the anchor transform on the limb when the object is anchored.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.ReparentToAnchor">
+            <summary>
+            Determines if the object is parented to the limb anchor when anchored.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.Anchorable.HideController">
+            <summary>
+            Indicates if the <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarController"/> attached to the limb will be deactivated when this object becomes anchored.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Interaction.Anchorable.OnAnchored(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            [Internal use] Called by the VRAvatar system when this object is anchored to a limb. You should not need to call this manually.
+            </summary>
+            <param name="limb">The limb the object was anchored to.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Interaction.Anchorable.OnUnanchored(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            [Internal use] Called by the VRAvatar system when this object is unanchored from a limb. You should not need to call this manually.
+            </summary>
+            <param name="limb">The limb the object was unanchored from.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.AnchorableEvent">
+            <summary>
+            A serializable unity event for <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> objects.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.AnchorAttachFlags">
+            <summary>
+            Flags for controlling the behaviour of limb anchor attachments.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Interaction.AnchorAttachFlags.ReparentToAnchor">
+            <summary>
+            Determines if an object should be reparented to the anchor when attached.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Interaction.AnchorAttachFlags.IgnoreAnchorHandlers">
+            <summary>
+            Determines if anchor handlers are ignored when attaching an object.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Interaction.AnchorAttachFlags.Default">
+            <summary>
+            The default settings for attached an object to an anchor.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.AttachOnClick">
+            <summary>
+            Allows an <see cref="T:Liminal.SDK.VR.Avatars.Interaction.Anchorable"/> object to be attached to a <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> when clicked with a VR pointer.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.IAnchorHandler">
+            <summary>
+            An interface that should be placed on components that handle anchoring events.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.IAnchorHandler.enabled">
+            <summary>
+            Gets or sets the enabled state of the handler.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Interaction.IAnchorHandler.ModifyPosition(UnityEngine.Vector3@,UnityEngine.Vector3@)">
+            <summary>
+            Applies modifications to the position of the anchored object.
+            </summary>
+            <param name="current">The current position.</param>
+            <param name="target">The target position.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Interaction.IAnchorHandler.ModifyRotation(UnityEngine.Quaternion@,UnityEngine.Quaternion@)">
+            <summary>
+            Applies modifications to the rotation of the anchored object.
+            </summary>
+            <param name="current">The current rotation.</param>
+            <param name="target">The target rotation.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor">
+            <summary>
+            Smoothly transitions an object to an avatar anchor.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.DefaultTravelTime">
+            <summary>
+            The default travel time for smooth anchored objects.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.DefaultPositionSmoothing">
+            <summary>
+            The default position smooething time for smooth anchored objects.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.DefaultRotationSmoothing">
+            <summary>
+            The default rotation smooething time for smooth anchored objects.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.TravelTime">
+            <summary>
+            Gets or sets the desired travel time for the object when attaching to the anchor.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.PositionSmoothing">
+            <summary>
+            Gets or sets the smoothing factor applied to the object's position to eliminate jitter. A higher value applies more damping to the position.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.RotationSmoothing">
+            <summary>
+            Gets or sets the smoothing factor applied to the object's rotation to eliminate jitter. A higher value applies more damping to the rotation.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.ModifyPosition(UnityEngine.Vector3@,UnityEngine.Vector3@)">
+            <summary>
+            Applies modifications to the position of the anchored object.
+            </summary>
+            <param name="current">The current position.</param>
+            <param name="target">The target position.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.Interaction.SmoothAnchor.ModifyRotation(UnityEngine.Quaternion@,UnityEngine.Quaternion@)">
+            <summary>
+            Applies modifications to the rotation of the anchored object.
+            </summary>
+            <param name="current">The current rotation.</param>
+            <param name="target">The target rotation.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRAvatar">
+            <summary>
+            Base interface for VRAvatar instances.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.IsActive">
+            <summary>
+            Indicates if the avatar is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.Transform">
+            <summary>
+            Gets the avatar's transform.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.Auxiliaries">
+            <summary>
+            Gets the container for auxiliary systems.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.Head">
+            <summary>
+            Gets the Head limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.PrimaryHand">
+            <summary>
+            Gets the primary hand limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.SecondaryHand">
+            <summary>
+            Gets the secondary hand limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.Hands">
+            <summary>
+            Gets a list of all hand limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.Limbs">
+            <summary>
+            Gets a list of all limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.ScreenFader">
+            <summary>
+            Gets the <see cref="T:Liminal.Core.Fader.IScreenFader"/> that controls the screen fades for this avatar.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.LookForward">
+            <summary>
+            Gets the forward looking direction vector for the avatar. This is a shortcut to the head's active eye camera forward.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatar.LookRotation">
+            <summary>
+            Gets the looking rotation for the avatar. This is a shortcut to the head's active eye camera rotation.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.InitializeExtensions">
+            <summary>
+            Initializes the avatar extension components.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetLimb(Liminal.SDK.VR.Avatars.VRAvatarLimbAlias)">
+            <summary>
+            Gets the limb for the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias"/> alias.
+            </summary>
+            <param name="alias">The limb alias.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> for the specified alias, or null if no limb is available for the supplied alias value.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetLimb(Liminal.SDK.VR.Avatars.VRAvatarLimbType)">
+            <summary>
+            Gets the first <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified type attached to the avatar.
+            </summary>
+            <param name="type">The <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> of the limb to retrieve.</param>
+            <returns>The first <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetLimb(Liminal.SDK.VR.IVRDeviceComponent)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> assigned to the specified <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/>.
+            </summary>
+            <param name="deviceComponent">The VR device component of the limb to retrieve.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> assigned to the specified <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetExtension``1">
+            <summary>
+            Get the first extension of the specified type, or null if no extension exists of this type.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+            <returns>The extension of the specified type, or null if no extension exists of this type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetExtensions``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Gets all extensions of the specified type and places them into the supplied list and returns the number of objects that were added to the list.
+            The list is cleared before any objects are added.
+            </summary>
+            <typeparam name="TExtension">The type of the extensions to add.</typeparam>
+            <param name="list">The list to add the extensions to.</param>
+            <returns>The number of objects that were added to the list.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetExtension(System.Type)">
+            <summary>
+            Get the first extension of the specified type, or null if no extension exists of this type.
+            </summary>
+            <param name="type">The type of the extension.</param>
+            <returns>The extension of the specified type, or null if no extension exists of this type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.GetExtensions(System.Type,System.Collections.Generic.IList{Liminal.SDK.VR.Avatars.Extensions.IVRAvatarExtension})">
+            <summary>
+            Gets all extensions of the specified type and places them into the supplied list and returns the number of objects that were added to the list.
+            The list is cleared before any objects are added.
+            </summary>
+            <param name="type">The type of the extensions to add.</param>
+            <param name="list">The list to add the extensions to.</param>
+            <returns>The number of objects that were added to the list.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state for the avatar.
+            </summary>
+            <param name="activeState">The active state for the avatar.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.HasLimb(Liminal.SDK.VR.Avatars.VRAvatarLimbType)">
+            <summary>
+            Indicates if the avatar has a <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> type.
+            </summary>
+            <param name="type">The <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> of the limb to search for.</param>
+            <returns>A boolean indicating if the avatar has a <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.SetHandsActive(System.Boolean)">
+            <summary>
+            Sets the active state for the hand limbs.
+            </summary>
+            <param name="active">The active state for the hand limbs.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatar.SetLimbActiveState(Liminal.SDK.VR.Avatars.VRAvatarLimbType,System.Boolean)">
+            <summary>
+            Sets the active state for all limbs of the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/>.
+            </summary>
+            <param name="limbType">The <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/>.</param>
+            <param name="activeState">The active state for all limbs of the supplied type.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRAvatarHand">
+            <summary>
+            An extension interface for <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> for hand limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHand.InputDevice">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> currently assigned to this hand.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.ActiveCameraChangedEventHandler">
+            <summary>
+            A delegate for use with camera change events on a <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHead"/> instance.
+            </summary>
+            <param name="head">The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHead"/> the event relates to.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRAvatarHead">
+            <summary>
+            An extension interface for <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> representing the head limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.Headset">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRHeadset"/> currently assigned to this limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.ActiveEyeCamera">
+            <summary>
+            Gets the active eye camera. If <see cref="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.UsePerEyeCameras"/> is <code>true</code>, this will return <see cref="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.LeftEyeCamera"/> if active, otherwise
+            it will return <see cref="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.CenterEyeCamera"/>. This value should be used if you need to reference the camera, but do not need a specific eye camera.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.CenterEyeCamera">
+            <summary>
+            Gets the main eye camera assigned to the head.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.LeftEyeCamera">
+            <summary>
+            Gets the main eye camera assigned to the head.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.RightEyeCamera">
+            <summary>
+            Gets the main eye camera assigned to the head.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarHead.UsePerEyeCameras">
+            <summary>
+            Determines if the left/right eye cameras are used, or if center eye camera is used.
+            If true, the left and right eye cameras are used and the center eye camera is disabled. If false, the center eye camera is used and the left/right eye cameras are disabled.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.Avatars.IVRAvatarHead.ActiveCameraChanged">
+            <summary>
+            Raised when the active camera is changed.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb">
+            <summary>
+            An interface representing and avatar limb (hands, head, etc).
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Avatar">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.VRAvatar"/> the limb is attached to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.DeviceComponent">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/> the limb is assigned to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.LimbType">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> for this limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.TrackedObject">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRTrackedObjectProxy"/> assigned to the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Transform">
+            <summary>
+            Gets the transform for this limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Anchor">
+            <summary>
+            The anchor transform for the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.AttachedObjects">
+            <summary>
+            Gets the list of GameObjects currently attached to the limb anchor.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.IsActive">
+            <summary>
+            Indicates if the limb is currently active.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatarLimb.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state of the limb.
+            </summary>
+            <param name="activeState">The active state of the limb.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Attach(UnityEngine.GameObject,Liminal.SDK.VR.Avatars.Interaction.AnchorAttachFlags)">
+            <summary>
+            Attachs a GameObject to the limb's anchor.
+            </summary>
+            <param name="gameObject">The GameObject to attach</param>
+            <param name="flags">Settings for attaching the object.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Unattach(UnityEngine.GameObject,UnityEngine.Transform)">
+            <summary>
+            Removes a GameObject from the limb's anchor and returns a boolean indicating if the object was unattached.
+            </summary>
+            <param name="gameObject">The GameObject to unattach.</param>
+            <param name="newParent">The new Transform to parent <paramref name="gameObject"/> to.</param>
+            <returns>A boolean indicating if <paramref name="gameObject"/> was unattached from <see cref="P:Liminal.SDK.VR.Avatars.IVRAvatarLimb.Anchor"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatarLimb.UnattachAll(UnityEngine.Transform)">
+            <summary>
+            Unattaches all GameObjects from the limb and reparents them to <paramref name="newParent"/>.
+            </summary>
+            <param name="newParent">The transform to parent all current attachments to.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRAvatarLimb.UpdateState">
+            <summary>
+            [Internal use only] Updates the internal state of the limb.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRAvatarSettings">
+            <summary>
+            An interface for implementing per-device VRAvatar settings.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRDeviceAvatar">
+            <summary>
+            An interface for implementing device-specific avatar behaviours.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRDeviceAvatar.Avatar">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> for this device controller.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.IVRDeviceAvatar.InstantiateControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Instantiates a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for a limb.
+            </summary>
+            <param name="limb">The limb for the controller.</param>
+            <returns>The newly instantiated controller visual for the specified limb, or null if no controller visual was able to be created.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.IVRTrackedObjectProxy">
+            <summary>
+            An interface for wrapping tracked objects.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRTrackedObjectProxy.IsActive">
+            <summary>
+            Indicates if the tracked object is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRTrackedObjectProxy.Position">
+            <summary>
+            Gets the world-space position of the tracked object.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.IVRTrackedObjectProxy.Rotation">
+            <summary>
+            Gets the world-space rotation of the tracked object.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarEventHandler">
+            <summary>
+            An event handling delegate with a single <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> argument.
+            </summary>
+            <param name="avatar">The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> the event relates to.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatar">
+            <summary>
+            A full, concrete implementation of <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Active">
+            <summary>
+            Gets the current active <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/>.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.Avatars.VRAvatar.AvatarChanged">
+            <summary>
+            Raised when the active avatar has changed.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.IsActive">
+            <summary>
+            Indicates if the avatar is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Transform">
+            <summary>
+            Gets the avatar's transform.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Auxiliaries">
+            <summary>
+            Gets the container for auxiliary systems.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Head">
+            <summary>
+            Gets the Head limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.PrimaryHand">
+            <summary>
+            Gets the primary hand limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.SecondaryHand">
+            <summary>
+            Gets the secondary hand limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Hands">
+            <summary>
+            Gets a list of all hand limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Limbs">
+            <summary>
+            Gets a list of all limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.Extensions">
+            <summary>
+            Gets the list of all extension assigned to the avatar.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.ScreenFader">
+            <summary>
+            Gets the screen fader for the avatar.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.LookForward">
+            <summary>
+            Gets the forward looking direction vector for the avatar. This is a shortcut to the head's active eye camera forward.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatar.LookRotation">
+            <summary>
+            Gets the looking rotation for the avatar. This is a shortcut to the head's active eye camera rotation.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.InitializeExtensions">
+            <summary>
+            Initializes all avatar extensions.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetLimb(Liminal.SDK.VR.Avatars.VRAvatarLimbAlias)">
+            <summary>
+            Gets the limb for the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias"/> alias.
+            </summary>
+            <param name="alias">The limb alias.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> for the specified alias, or null if no limb is available for the supplied alias value.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetLimb(Liminal.SDK.VR.Avatars.VRAvatarLimbType)">
+            <summary>
+            Gets the first <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified type attached to the avatar.
+            </summary>
+            <param name="type">The <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> of the limb to retrieve.</param>
+            <returns>The first <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetLimb(Liminal.SDK.VR.IVRDeviceComponent)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> assigned to the specified <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/>.
+            </summary>
+            <param name="deviceComponent">The VR device component of the limb to retrieve.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> assigned to the specified <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.HasLimb(Liminal.SDK.VR.Avatars.VRAvatarLimbType)">
+            <summary>
+            Indicates if the avatar has a <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> type.
+            </summary>
+            <param name="type">The <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> of the limb to search for.</param>
+            <returns>A boolean indicating if the avatar has a <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.SetHandsActive(System.Boolean)">
+            <summary>
+            Sets the active state for the hand limbs.
+            </summary>
+            <param name="activeState">The active state for the hand limbs.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.SetLimbActiveState(Liminal.SDK.VR.Avatars.VRAvatarLimbType,System.Boolean)">
+            <summary>
+            Sets the active state for all limbs of the specified <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/>.
+            </summary>
+            <param name="limbType">The <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/>.</param>
+            <param name="activeState">The active state for all limbs of the supplied type.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state for the avatar.
+            </summary>
+            <param name="activeState">The active state to set.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetExtension``1">
+            <summary>
+            Get the first extension of the specified type, or null if no extension exists of this type.
+            </summary>
+            <typeparam name="TExtension">The extension of the specified type.</typeparam>
+            <returns>The extension of the specified type, or null if no extension exists of this type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetExtensions``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Gets all extensions of the specified type and places them into the supplied list and returns the number of objects that were added to the list.
+            The list is cleared before any objects are added.
+            </summary>
+            <typeparam name="TExtension">The type of the extensions to add.</typeparam>
+            <param name="list">The list to add the extensions to.</param>
+            <returns>The number of objects that were added to the list.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetExtension(System.Type)">
+            <summary>
+            Get the first extension of the specified type, or null if no extension exists of this type.
+            </summary>
+            <param name="type">The type of the extension.</param>
+            <returns>The extension of the specified type, or null if no extension exists of this type.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatar.GetExtensions(System.Type,System.Collections.Generic.IList{Liminal.SDK.VR.Avatars.Extensions.IVRAvatarExtension})">
+            <summary>
+            Gets all extensions of the specified type and places them into the supplied list and returns the number of objects that were added to the list.
+            The list is cleared before any objects are added.
+            </summary>
+            <param name="type">The type of the extensions to add.</param>
+            <param name="list">The list to add the extensions to.</param>
+            <returns>The number of objects that were added to the list.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarController">
+            <summary>
+            GameObjects with this component attached will automatically have a device-specific controller attached to them when the avatar is initialized.
+            Generally this component is added to an object anchored to the hands.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarController.ControllerVisual">
+            <summary>
+            Gets or sets the controller visual assigned to the avatar controller.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRLimbAttachmentEvent">
+            <summary>
+            A serializable unity event for <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> attachment events.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarExtensions">
+            <summary>
+            A collection of useful extension methods for the VRAvatar system.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetLimb(Liminal.SDK.VR.Avatars.IVRAvatar,UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the avatar that owns the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> that triggered the event.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="eventData">The event data.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> that owns the pointer that triggered the event.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetLimb(Liminal.SDK.VR.Avatars.IVRAvatar,Liminal.SDK.VR.EventSystems.VRPointerEventData)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> of the avatar that owns the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> that triggered the event.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="eventData">The event data.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/> that owns the pointer that triggered the event.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetHand(Liminal.SDK.VR.Avatars.IVRAvatar,UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> of the avatar that owns the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> that triggered the event.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="eventData">The event data.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> that owns the pointer that triggered the event.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetHand(Liminal.SDK.VR.Avatars.IVRAvatar,Liminal.SDK.VR.EventSystems.VRPointerEventData)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> of the avatar that owns the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> that triggered the event.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="eventData">The event data.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> that owns the pointer that triggered the event.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetHand(Liminal.SDK.VR.Avatars.IVRAvatar,Liminal.SDK.VR.Input.VRInputDeviceHand)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> for the specified input device handedness.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="hand">The input device handedness.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> for the specified input device handedness</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetHand(Liminal.SDK.VR.Avatars.IVRAvatar,Liminal.SDK.VR.IVRDeviceComponent)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> assigned to the specified <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/>. If the limb assigned to the device component does not implement <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/>, a null reference will be returned.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="deviceComponent">The VR device component of the limb to retrieve.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/> assigned to the specified <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/>, or null if the assigned limb does not implement <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/>.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.CreateAuxiliaryObject(Liminal.SDK.VR.Avatars.IVRAvatar,System.String,UnityEngine.HideFlags)">
+            <summary>
+            Creates a GameObject and places it under the avatar's Auxiliary object.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="name">The name of the GameObject to create.</param>
+            <param name="hideFlags">Optional hide flags to set on the object.</param>
+            <returns>The newly created auxiliary GameObject.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatar,UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the limb that triggered a pointer event.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="eventData">The pointer event data.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the limb that triggered the pointer event, or null if no controller is found.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatar,Liminal.SDK.VR.EventSystems.VRPointerEventData)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the limb that triggered a VR pointer event.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="eventData">The pointer event data.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the limb that triggered the VR pointer event, or null if no controller is found.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatar,Liminal.SDK.VR.Input.VRInputDeviceHand)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> assigned to the specified hand.
+            </summary>
+            <param name="avatar">The avatar.</param>
+            <param name="hand">The avatar hand.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the specified hand, or null if no controller is found.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.GetControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the specified <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarLimb"/>.
+            </summary>
+            <param name="limb">The avatar limb.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for the specified limb, or null if no controller is found.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarExtensions.InstantiateControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Instantiates a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for this limb.
+            </summary>
+            <param name="limb">The limb for the controller.</param>
+            <returns>The newly instantiated controller visual for this limb, or null if no controller visual was able to be created.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarHand">
+            <summary>
+            A concrete implmentation of <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHand"/>, representing a hand limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHand.InputDevice">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> currently assigned to this hand.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarHead">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatarHead"/>, representing the head limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.DeviceComponent">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/> the limb is assigned to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.Headset">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRHeadset"/> attached to this limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.ActiveEyeCamera">
+            <summary>
+            Gets the active eye camera. If <see cref="P:Liminal.SDK.VR.Avatars.VRAvatarHead.UsePerEyeCameras"/> is <code>true</code>, this will return <see cref="P:Liminal.SDK.VR.Avatars.VRAvatarHead.LeftEyeCamera"/> if active, otherwise
+            it will return <see cref="P:Liminal.SDK.VR.Avatars.VRAvatarHead.CenterEyeCamera"/>. This value should be used if you need to reference the camera, but do not need a specific eye camera.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.CenterEyeCamera">
+            <summary>
+            Gets the center eye camera. This camera has <see cref="P:UnityEngine.Camera.stereoTargetEye"/> set to <see cref="F:UnityEngine.StereoTargetEyeMask.Both"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.LeftEyeCamera">
+            <summary>
+            Gets the left eye camera. This camera has <see cref="P:UnityEngine.Camera.stereoTargetEye"/> set to <see cref="F:UnityEngine.StereoTargetEyeMask.Left"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.RightEyeCamera">
+            <summary>
+            Gets the right eye camera. This camera has <see cref="P:UnityEngine.Camera.stereoTargetEye"/> set to <see cref="F:UnityEngine.StereoTargetEyeMask.Right"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarHead.UsePerEyeCameras">
+            <summary>
+            Determines if the left/right eye cameras are used, or if center eye camera is used.
+            If true, the left and right eye cameras are used and the center eye camera is disabled. If false, the center eye camera is used and the left/right eye cameras are disabled.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.Avatars.VRAvatarHead.ActiveCameraChanged">
+            <summary>
+            Raised when the active camera is changed.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarHelper">
+            <summary>
+            A collection of helper methods for working with the VRAvatar system.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarHelper.EnsureLoadPrefab``1(System.String)">
+            <summary>
+            Ensures the specified prefab exists, and returns the prefab. An exception will be thrown if the prefab does not exist.
+            </summary>
+            <typeparam name="T">The type of the prefab.</typeparam>
+            <param name="name">The name of the prefab.</param>
+            <returns>The prefab of the specified type and name.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarLimb">
+            <summary>
+            An abstract base class representing an avatar limb.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarLimb.LimbEvents">
+            <summary>
+            A collection of events relating to avatar limbs.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.LimbEvents.OnAnchored">
+            <summary>
+            Raised when an object is anchored to the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.LimbEvents.OnUnanchored">
+            <summary>
+            Raised when an object unanchored from the limb.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarLimb.TrackedObjectSettings">
+            <summary>
+            Settings for managing the tracked state of the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.Avatar">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> the limb is attached to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.DeviceComponent">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/> the limb is assigned to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.LimbType">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType"/> of this limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.TrackedObject">
+            <summary>
+            Gets the tracked object assigned to the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.Anchor">
+            <summary>
+            Gets the anchor transform for the limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.AttachedObjects">
+            <summary>
+            Gets the list of GameObjects currently attached to the limb anchor.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.Events">
+            <summary>
+            Gets the limb events.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.IsActive">
+            <summary>
+            Indicates if the limb is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.Transform">
+            <summary>
+            Gets the transform for this limb.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.TrackingSettings">
+            <summary>
+            Gets or sets the tracking settings for the limb.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarLimb.UpdateState">
+            <summary>
+            [Internal use only] Updates the internal state of the limb. You should not call this from your own code.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarLimb.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state for the limb.
+            </summary>
+            <param name="activeState">The active state of the limb.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarLimb.Attach(UnityEngine.GameObject,Liminal.SDK.VR.Avatars.Interaction.AnchorAttachFlags)">
+            <summary>
+            Attaches a <see cref="T:UnityEngine.GameObject"/> to the limb anchor.
+            </summary>
+            <param name="gameObject">The <see cref="T:UnityEngine.GameObject"/> to attach to the limb anchor.</param>
+            <param name="flags">Options for attaching the object to the limb anchor.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarLimb.Unattach(UnityEngine.GameObject,UnityEngine.Transform)">
+            <summary>
+            Unattaches a <see cref="T:UnityEngine.GameObject"/> from the limb anchor and attaches to the specified parent. If no parent transform is supplied,
+            the object will be reparented to the scene root.
+            </summary>
+            <param name="gameObject">The <see cref="T:UnityEngine.GameObject"/> to unattach.</param>
+            <param name="newParent">The <see cref="P:Liminal.SDK.VR.Avatars.VRAvatarLimb.Transform"/> to reparent the object to. Use null to reparent to the scene root.</param>
+            <returns>A boolean indicating if the object was successfully unattached.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Avatars.VRAvatarLimb.UnattachAll(UnityEngine.Transform)">
+            <summary>
+            Unattaches all GameObjects from the limb and reparents them to <paramref name="newParent"/>.
+            </summary>
+            <param name="newParent">The transform to parent all current attachments to.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias">
+            <summary>
+            Alias values for limbs.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias.None">
+            <summary>
+            None/unknown limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias.Head">
+            <summary>
+            The head limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias.PrimaryHand">
+            <summary>
+            The primary hand limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbAlias.SecondaryHand">
+            <summary>
+            The secondary hand limb.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Avatars.VRAvatarLimbType">
+            <summary>
+            An enumeration of <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> limb types.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbType.None">
+            <summary>
+            Default value, represents no limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbType.Head">
+            <summary>
+            The head limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbType.LeftHand">
+            <summary>
+            The left-hand limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbType.RightHand">
+            <summary>
+            The right-hand limb.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Avatars.VRAvatarLimbType.Other">
+            <summary>
+            Any other type of limb.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.EventSystems.VRPointerEventData">
+            <summary>
+            Event payload associated with VR device pointer events.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPointerEventData.Current">
+            <summary>
+            The GameObject the pointer is currently hovered over.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPointerEventData.Pointer">
+            <summary>
+            The <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> that the event data data relates to.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.EventSystems.VRPointerEventData.Reset">
+            <summary>
+            Resets the event state.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.EventSystems.VRPointerInputModule">
+            <summary>
+            A concrete implementation of <see cref="T:UnityEngine.EventSystems.BaseInputModule"/> that handles input from <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> instances.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.EventSystems.VRPointerInputModule.RaycastEventCamera">
+            <summary>
+            The camera used for raycasting into the scene.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.EventSystems.VRPointerInputModule.AddPointer(Liminal.SDK.VR.Pointers.IVRPointer)">
+            <summary>
+            Adds a <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> to the module for processing. If the pointer already exists in the internal pointer list, it will not be added again.
+            </summary>
+            <param name="pointer">The <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> to add to the module.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.EventSystems.VRPointerInputModule.RemovePointer(Liminal.SDK.VR.Pointers.IVRPointer)">
+            <summary>
+            Removes a <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> from the input module's processing routine. Returns a boolean indicating if the pointer was removed from the internal pointer list.
+            </summary>
+            <param name="pointer">The <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> to remove.</param>
+            <returns>A boolean indicating if the pointer was removed.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.EventSystems.VRPointerInputModule.Process">
+            <summary>
+            Process the current tick for the module.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.EventSystems.VRPhysicsRaycaster">
+            <summary>
+            A <see cref="T:UnityEngine.EventSystems.PhysicsRaycaster"/> implementation that is compatible with the <see cref="T:Liminal.SDK.VR.EventSystems.VRPointerInputModule"/> input module.
+            Add this component to the avatar to allow interaction on physical objects with VR devices.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPhysicsRaycaster.eventCamera">
+            <summary>
+            Get the camera that is used for this module.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPhysicsRaycaster.Depth">
+            <summary>
+            Get the depth of the configured camera.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPhysicsRaycaster.FinalEventMask">
+            <summary>
+            Logical and of Camera mask and eventMask.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPhysicsRaycaster.EventMask">
+            <summary>
+            Mask of allowed raycast events.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.EventSystems.VRPhysicsRaycaster.MaxRayIntersections">
+            <summary>
+            Max number of ray intersection allowed to be found.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Input.VRButton">
+            <summary>
+            Button mapping names for VR input devices.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Back">
+            <summary>
+            The 'back' button input. This button is generally supported on all devices, however functionality differs on each device.
+            Alternative names for this button may include 'back', 'menu', 'system'.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>App</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>Back</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Back</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Start</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Application Menu</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.One">
+            <summary>
+            The first input button. The button differs on each device, however all input devices support this button. This is usually the primary click/select mechanism.
+            If the device supports a trigger, this will generally be the primary input. For devices that do not support a trigger, this will be the primary clicking mechanism.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>DPad Tap</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Trigger</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Index Trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Trigger</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Two">
+            <summary>
+            The second input button. This button is not supported on all devices. Usually devices that offer a touchpad and a trigger button will support <see cref="F:Liminal.SDK.VR.Input.VRButton.Two"/>.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Hand Trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Touchpad</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Three">
+            <summary>
+            The third input button. This value is not supported on all devices. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>A</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Grip</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Four">
+            <summary>
+            The fourth input button. This value is not supported on all devices. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>B</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Touch">
+            <summary>
+            The touch/stick input. This value is only supported by input devices with the <see cref="F:Liminal.SDK.VR.VRInputDeviceCapability.Touch"/> capability. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>DPad Tap</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Thumbstick</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Touchpad</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Trigger">
+            <summary>
+            The trigger input. This value is only supported by input devices with the <see cref="F:Liminal.SDK.VR.VRInputDeviceCapability.TriggerButton"/> capability. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR</term>
+                    <description>Trigger</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Index Trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Trigger</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.DPadUp">
+            <summary>
+            The digital input pad up button. This value is only supported by input devices with the <see cref="F:Liminal.SDK.VR.VRInputDeviceCapability.DPad"/> capability. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>D-Pad Up</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.DPadDown">
+            <summary>
+            The digital input pad down button. This value is only supported by input devices with the <see cref="F:Liminal.SDK.VR.VRInputDeviceCapability.DPad"/> capability. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>D-Pad Down</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.DPadLeft">
+            <summary>
+            The digital input pad left button. This value is only supported by input devices with the <see cref="F:Liminal.SDK.VR.VRInputDeviceCapability.DPad"/> capability. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>D-Pad Left</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.DPadRight">
+            <summary>
+            The digital input pad right button. This value is only supported by input devices with the <see cref="F:Liminal.SDK.VR.VRInputDeviceCapability.DPad"/> capability. This button differs on each device.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>D-Pad Right</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Primary">
+            <summary>
+            The primary input button. This value is synonomous with <see cref="F:Liminal.SDK.VR.Input.VRButton.One"/>.
+            <seealso cref="F:Liminal.SDK.VR.Input.VRButton.One"/>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRButton.Seconday">
+            <summary>
+            The secondary input button. This value is synonomous with <see cref="F:Liminal.SDK.VR.Input.VRButton.Two"/>.
+            <seealso cref="F:Liminal.SDK.VR.Input.VRButton.One"/>
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Input.VRAxis">
+            <summary>
+            Axis mapping names for VR input devices.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.One">
+            <summary>
+            The primary input axis in the range of [(-1,-1)...(1,1)], where (0, 0) is the center of the pad or joystick. For triggers, this represents a single axis as a float.
+            For most devices, this will be either a touchpad or joystick. 
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>D-Pad</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Thumbstick</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Touchpad</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.OneRaw">
+            <summary>
+            The primary input axis in the range of [(0,0)...(1,1)], where (0, 0) is the top left of the pad or joystick, and (1, 1) is the bottom right of the pad or joystick.
+            For most devices, this will be either a touchpad or joystick.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>D-Pad</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Touchpad</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Thumbstick</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Touchpad</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.Two">
+            <summary>
+            The secondary input axis in the range of [(-1,-1)...(1,1)], where (0, 0) is the center of the pad or joystick. For triggers, this represents a single axis as a float.
+            Most mobile devices do not have a secondary input axis. Using this axis is not recommended.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Hand trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Trigger</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.TwoRaw">
+            <summary>
+            The secondary input axis in the range of [(0,0)...(1,1)], where (0, 0) is the top left of the pad or joystick, and (1, 1) is the bottom right of the pad or joystick.
+            Most mobile devices do not have a secondary input axis. Using this axis is not recommended.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Index trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.Three">
+            <summary>
+            The third input axis in the range of [(-1,-1)...(1,1)], where (0, 0) is the center of the pad or joystick. For triggers, this represents a single axis as a float.
+            Most devices do not have a third input axis. Using this axis is not recommended.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Hand trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Trigger</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.ThreeRaw">
+            <summary>
+            The third input axis in the range of [(0,0)...(1,1)], where (0, 0) is the top left of the pad or joystick, and (1, 1) is the bottom right of the pad or joystick. For triggers, this represents a single axis as a float.
+            Most devices do not have a third input axis. Using this axis is not recommended.
+            <list type="table">
+                <listheader>
+                    <term>Device</term>
+                    <description>Button</description>
+                </listheader>
+                <item>
+                    <term>Daydream</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Headset</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>GearVR Controller</term>
+                    <description>Not Supported</description>
+                </item>
+                <item>
+                    <term>Oculus Rift</term>
+                    <description>Hand trigger</description>
+                </item>
+                <item>
+                    <term>HTC Vive</term>
+                    <description>Not Supported</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.Primary">
+            <summary>
+            The primary input axis. This value is synonomous with <see cref="F:Liminal.SDK.VR.Input.VRAxis.One"/>.
+            <seealso cref="F:Liminal.SDK.VR.Input.VRAxis.One"/>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.PrimaryRaw">
+            <summary>
+            The primary raw input axis. This value is synonomous with <see cref="F:Liminal.SDK.VR.Input.VRAxis.OneRaw"/>.
+            <seealso cref="F:Liminal.SDK.VR.Input.VRAxis.OneRaw"/>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.Seconday">
+            <summary>
+            The secondary input axis. This value is synonomous with <see cref="F:Liminal.SDK.VR.Input.VRAxis.Two"/>.
+            <seealso cref="F:Liminal.SDK.VR.Input.VRAxis.Two"/>
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Input.VRAxis.SecondayRaw">
+            <summary>
+            The secondary raw input axis. This value is synonomous with <see cref="F:Liminal.SDK.VR.Input.VRAxis.TwoRaw"/>.
+            <seealso cref="F:Liminal.SDK.VR.Input.VRAxis.TwoRaw"/>
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Input.IVRInputDevice">
+            <summary>
+            An interface that represents a hardware VR input device (such as a controller).
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Input.IVRInputDevice.ButtonCount">
+            <summary>
+            Gets the number of buttons the device has.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Input.IVRInputDevice.Hand">
+            <summary>
+            Gets the hand the device is assigned to.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.HasCapabilities(Liminal.SDK.VR.VRInputDeviceCapability)">
+            <summary>
+            Indicates if the input device has a specific set of capabilities. This method returns true only if ALL values within the <paramref name="capabilities"/> bitmask are available on the input device.
+            </summary>
+            <param name="capabilities">The capabilities to check. This value is a bitmask of <see cref="T:Liminal.SDK.VR.VRInputDeviceCapability"/> values.</param>
+            <returns>A boolean indicating if the input device has ALL the capabilities specified by the <paramref name="capabilities"/> bitmask.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.HasAxis1D(System.String)">
+            <summary>
+            Indicates if the input device has a 1-dimensional axis with the specified name.
+            </summary>
+            <param name="axis">The axis name.</param>
+            <returns>A boolean value indicating if the a 1-dimensional axis with the specified name exists on the input device.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.HasAxis2D(System.String)">
+            <summary>
+            Indicates if the input device has a 2-dimensional axis with the specified name.
+            </summary>
+            <param name="axis">The axis name.</param>
+            <returns>A boolean value indicating if the a 2-dimensional axis with the specified name exists on the input device.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.HasButton(System.String)">
+            <summary>
+            Indicates if the input device has a button with the specified name.
+            </summary>
+            <param name="button">The button name.</param>
+            <returns>A boolean value indicating if the a button with the specified name exists on the input device.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.GetAxis1D(System.String)">
+            <summary>
+            Gets the current value of the specified 1-dimensional axis on the input device.
+            </summary>
+            <param name="axis">The axis name.</param>
+            <returns>The current value of the axis on the input device.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.GetAxis2D(System.String)">
+            <summary>
+            Gets the current value of the specified 2-dimensional axis on the input device.
+            </summary>
+            <param name="axis">The axis name.</param>
+            <returns>The current value of the axis on the input device.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.GetButton(System.String)">
+            <summary>
+            Returns true if the specified button is currently being held.
+            </summary>
+            <param name="button">The button name.</param>
+            <returns>A boolean indicating if the specified button is currently being held.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.GetButtonDown(System.String)">
+            <summary>
+            Returns true if the specified button was pressed on this frame. This value is true only for the single frame when the button was initially pressed.
+            </summary>
+            <param name="button">The button name.</param>
+            <returns>A boolean indicating if the specified button was pressed this frame.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Input.IVRInputDevice.GetButtonUp(System.String)">
+            <summary>
+            Returns true if the specified button was released on this frame. This value is true only for the single frame when the button was released.
+            </summary>
+            <param name="button">The button name.</param>
+            <returns>A boolean indicating if the specified button was released this frame.</returns>
+        </member>
+        <member name="P:Liminal.SDK.VR.Input.IVRInputDevice.IsTouching">
+            <summary>
+            Returns true if the touchpad is being touched
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Input.VRInputDeviceHand">
+            <summary>
+            An enumeration for input device hand values.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRDeviceEventHandler">
+            <summary>
+            An event handler delegate that takes a single <see cref="T:Liminal.SDK.VR.IVRDevice"/> argument.
+            </summary>
+            <param name="vrDevice">The <see cref="T:Liminal.SDK.VR.IVRDevice"/> that event relates to.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRInputDeviceEventHandler">
+            <summary>
+            An event handler delegate relating to a VR input device.
+            </summary>
+            <param name="vrDevice">The <see cref="T:Liminal.SDK.VR.IVRDevice"/> that event relates to.</param>
+            <param name="inputDevice">The <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> the event relates to.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.IVRDevice">
+            <summary>
+            An interface representing a VR hardware device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.Name">
+            <summary>
+            Gets the name of the device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.InputDeviceCount">
+            <summary>
+            Gets the number of input devices currently connected.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.Headset">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRHeadset"/> of the device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.InputDevices">
+            <summary>
+            Gets an enumerable collection of <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> objects currently connected.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.PrimaryInputDevice">
+            <summary>
+            Gets the primary input device, if connected and available.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.SecondaryInputDevice">
+            <summary>
+            Gets the secondary input device, if connected and available.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.IVRDevice.InputDeviceConnected">
+            <summary>
+            Raised when a <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> is connected.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.IVRDevice.InputDeviceDisconnected">
+            <summary>
+            Raised when a <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> is disconnected.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.IVRDevice.PrimaryInputDeviceChanged">
+            <summary>
+            Raised when the primary <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> has changed.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDevice.HasCapabilities(Liminal.SDK.VR.VRDeviceCapability)">
+            <summary>
+            Indicates if the device has a specific set of capabilities. This method returns true only if ALL values within the <paramref name="capabilities"/> bitmask are available on the device.
+            </summary>
+            <param name="capabilities">The capabilities to check. This value is a bitmask of <see cref="T:Liminal.SDK.VR.VRDeviceCapability"/> values.</param>
+            <returns>A boolean indicating if the device has ALL the capabilities specified by the <paramref name="capabilities"/> bitmask.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDevice.SetupAvatar(Liminal.SDK.VR.Avatars.IVRAvatar)">
+            <summary>
+            [Internal use] Sets up an <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> instance for this device. You should not have to call this manually.
+            </summary>
+            <param name="avatar">The <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> instance to bind to the device.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDevice.Update">
+            <summary>
+            [Internal use] Updates the state of the device. You do not have to call this manually.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.CpuLevel">
+            <summary>
+            Control the CPU clock speed if possible. See OVRManager.cpuLevel.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDevice.GpuLevel">
+            <summary>
+            Control the CPU clock speed if possible. See OVRManager.gpuLevel.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.IVRDeviceComponent">
+            <summary>
+            An interface for representing a single hardware component of a <see cref="T:Liminal.SDK.VR.IVRDevice"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDeviceComponent.Name">
+            <summary>
+            Gets the name of the device component.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.IVRDeviceComponent.Pointer">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> assigned to the component.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.IVRDeviceExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Liminal.SDK.VR.IVRDevice"/> interface.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDeviceExtensions.SetPrimaryPointerActive(Liminal.SDK.VR.IVRDevice,System.Boolean)">
+            <summary>
+            Set the primary pointer active
+            </summary>
+            <param name="device"></param>
+            <param name="isActive"></param>
+        </member>
+        <member name="T:Liminal.SDK.VR.IVRDeviceInitializer">
+            <summary>
+            An interface for allowing an object to create <see cref="T:Liminal.SDK.VR.IVRDevice"/> instances.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDeviceInitializer.CreateDevice">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.VR.IVRDevice"/> and returns it.
+            </summary>
+            <returns>The <see cref="T:Liminal.SDK.VR.IVRDevice"/> that was created.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.IVRDeviceInputExtensions">
+            <summary>
+            Input extension methods for the <see cref="T:Liminal.SDK.VR.IVRDevice"/> interface.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDeviceInputExtensions.GetButtonDown(Liminal.SDK.VR.IVRDevice,System.String)">
+            <summary>
+            Wrapper for IVRInputDevice.GetButtonDown to handle null checks etc
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDeviceInputExtensions.GetButton(Liminal.SDK.VR.IVRDevice,System.String)">
+            <summary>
+            Wrapper for IVRInputDevice.GetButtonDown to handle null checks etc
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRDeviceInputExtensions.GetButtonUp(Liminal.SDK.VR.IVRDevice,System.String)">
+            <summary>
+            Wrapper for IVRInputDevice.GetButtonUp to handle null checks etc
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.IVRHeadset">
+            <summary>
+            An interface representing the HMD component of a VR device.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.IVRHeadset.HasCapabilities(Liminal.SDK.VR.VRHeadsetCapability)">
+            <summary>
+            Indicates if the headset has any of the capabilities specified by the supplied capabilities mask. Returns true if the device has all the capabilities specified by the mask.
+            </summary>
+            <param name="capabilities">A mask of <see cref="T:Liminal.SDK.VR.VRHeadsetCapability"/> flags to test for.</param>
+            <returns>A boolean indicating if the device has all of the capabilities specified by the mask.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.BasePointer">
+            <summary>
+            An abstract base implementation of <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/>.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.InputDevicePointer">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> designed for use with <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/>.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.IVRPointer">
+            <summary>
+            An interface representing a pointer that can be used by VR input devices.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRPointer.IsActive">
+            <summary>
+            Indicates if the pointer is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRPointer.DeviceComponent">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.IVRDeviceComponent"/> the pointer is bound to.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRPointer.CurrentRaycastResult">
+            <summary>
+            Gets the current input <see cref="T:UnityEngine.EventSystems.RaycastResult"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRPointer.Transform">
+            <summary>
+            Gets the transform for the origin of the pointer ray.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.Pointers.IVRPointer.ActiveStateChanged">
+            <summary>
+            Raised when the active state of the pointer has changed.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointer.Activate">
+            <summary>
+            Activates the pointer.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointer.Deactivate">
+            <summary>
+            Deactivates the pointer.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointer.OnPointerEnter(UnityEngine.GameObject)">
+            <summary>
+            [Internal use] Executed when the pointer hovers over an interactable GameObject.
+            </summary>
+            <param name="target">The GameObject the pointer the pointer entered.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointer.OnPointerExit(UnityEngine.GameObject)">
+            <summary>
+            [Internal use] Executed when the pointer leaves an interactable GameObject after <see cref="M:Liminal.SDK.VR.Pointers.IVRPointer.OnPointerEnter(UnityEngine.GameObject)"/> has been executed.
+            </summary>
+            <param name="target">The GameObject the pointer the pointer exited.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointer.GetButtonDown">
+            <summary>
+            [Internal use] Indicates if the primary interaction button was pressed.
+            </summary>
+            <returns>A boolean indicating if the primary interaction button was pressed.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointer.GetButtonUp">
+            <summary>
+            [Internal use] Indicates if the primary interaction button was released.
+            </summary>
+            <returns>A boolean indicating if the primary interaction button was released.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.TimedGazePointer">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Pointers.BasePointer"/> that triggers interaction on hover, after a specified time delay and duration has passed.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.TimedGazePointer.HoverDelay">
+            <summary>
+            Gets or sets the amount of time the pointer must be hovered over an object before the timer begins.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.TimedGazePointer.HoverActivationDuration">
+            <summary>
+            Gets or sets the amount of time the pointer must be hovered over an object before it is activated.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.TimedGazePointer.HoverDuration">
+            <summary>
+            Returns the length of time the pointer has been hovering over <see cref="!:CurrentTarget"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.TimedGazePointer.HoverTimeToActivation">
+            <summary>
+            Gets the amount of time until <see cref="!:CurrentTarget"/> will be activated due to being hovered.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.TimedGazePointer.HoverTimeNormalized">
+            <summary>
+            Gets the normalized progress of the current hover.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.TimedGazePointer.HoverPressTriggered">
+            <summary>
+            Indicates if the hover press has been triggered.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.BasePointerVisual">
+            <summary>
+            An abstract base implementation of <see cref="T:Liminal.SDK.VR.Pointers.IVRPointerVisual"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.BasePointerVisual.Pointer">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> the visual is currently bound to.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.BasePointerVisual.Bind(Liminal.SDK.VR.Pointers.IVRPointer)">
+            <summary>
+            Binds the pointer visual to an <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> instance.
+            </summary>
+            <param name="pointer">The <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> to bind the visual to.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.BasePointerVisual.Unbind">
+            <summary>
+            Unbinds the pointer visual from the current <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> instance.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.BasePointerVisual.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state of the pointer visual.
+            </summary>
+            <param name="activeState">The active state of the pointer visual.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.BaseReticleVisual">
+            <summary>
+            An abstract base implementation of <see cref="T:Liminal.SDK.VR.Pointers.IVRReticleVisual"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.BaseReticleVisual.CurrentRaycastResult">
+            <summary>
+            Gets or sets the current raycast result from the event system.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.GazePointerTimerVisual">
+            <summary>
+            A component that controls the timer visual for a <see cref="T:Liminal.SDK.VR.Pointers.TimedGazePointer"/> implementation. This component should be nested at, or below, a <see cref="T:Liminal.SDK.VR.Pointers.GazePointerVisual"/>.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.GazePointerVisual">
+            <summary>
+            A generic gaze pointer visual that supports base implementations of <see cref="T:Liminal.SDK.VR.Pointers.BasePointer"/>, and also <see cref="T:Liminal.SDK.VR.Pointers.TimedGazePointer"/>.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.GazePointerVisual.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state of the pointer visual.
+            </summary>
+            <param name="activeState">The active state of the pointer visual.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.IVRPointerVisual">
+            <summary>
+            An interface for the visual components of a <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRPointerVisual.transform">
+            <summary>
+            Gets the transfrom for the pointer visual.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRPointerVisual.Pointer">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> instance the visual is bound to.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointerVisual.Bind(Liminal.SDK.VR.Pointers.IVRPointer)">
+            <summary>
+            Binds the pointer visual to an <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> instance.
+            </summary>
+            <param name="pointer"></param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointerVisual.Unbind">
+            <summary>
+            Unbinds the pointer visual from the current <see cref="T:Liminal.SDK.VR.Pointers.IVRPointer"/> instance.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.IVRPointerVisual.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state of the pointer visual.
+            </summary>
+            <param name="activeState">The active state of the pointer visual.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.IVRReticleVisual">
+            <summary>
+            An interface for the visual components of a pointer reticle.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.IVRReticleVisual.CurrentRaycastResult">
+            <summary>
+            Gets or sets the current raycast result from the event system.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.LaserPointerVisual">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Pointers.BasePointerVisual"/> that uses a <see cref="T:UnityEngine.LineRenderer"/> to draw a 'laser' along the pointer direction.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.LaserPointerVisual.MaxDistance">
+            <summary>
+            Gets or sets the maximum distance of the beam.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.LaserPointerVisual.DefaultReticleDistance">
+            <summary>
+            Gets or sets the default distance of the reticle when not hitting any objects.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.LaserPointerVisual.GrowTime">
+            <summary>
+            Gets or sets the desired time for the laser to grow when hitting an object further away than the current position.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.LaserPointerVisual.HideReticleWhenInvalid">
+            <summary>
+            Determines if the reticle is hidden when not hitting any objects.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Pointers.LaserPointerVisual.SetActive(System.Boolean)">
+            <summary>
+            Sets the active state of the pointer visual.
+            </summary>
+            <param name="activeState">The active state of the pointer visual.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Pointers.ReticleVisual">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Pointers.BaseReticleVisual"/> the manages a standard pointer reticle.
+            <br/>Most of this was borrowed from <see cref="T:GvrControllerReticleVisual"/>. This implementation cleans up the code a little and fixes some rendering issues when multiple cameras are active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.FaceCameraSettings.IsAnyAxisOff">
+            <summary>
+            Indicates if any axes are set to false.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.MeshSizeMeters">
+            <summary>
+            The size of the reticle's mesh, in meters.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.MeshSizeRatio">
+            <summary>
+            The ratio of the reticleMeshSizeMeters to 1 meter.
+            If reticleMeshSizeMeters is 10, then reticleMeshSizeRatio is 0.1.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.SortingOrder">
+            <summary>
+            Gets or sets the sorting order for the mesh.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.SizeBasedOnCameraDistance">
+            <summary>
+            Determines if the size of the reticle is based on the distance from the camera.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.SizeMeters">
+            <summary>
+            Final size of the reticle in meters when it is 1 meter from the camera.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Pointers.ReticleVisual.FaceCamera">
+            <summary>
+            Gets or sets the camera-facing settings for the reticle.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.SimpleHeadset">
+            <summary>
+            A simple IVRHeadset implementation suitable for headsets with no input capabilities.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.UI.VRGraphicRaycaster">
+            <summary>
+            A <see cref="T:UnityEngine.UI.GraphicRaycaster"/> implementation that is compatible with the <see cref="T:Liminal.SDK.VR.EventSystems.VRPointerInputModule"/> input module. Add this component
+            to your Unity UI <see cref="T:UnityEngine.Canvas"/> objects to allow interaction with VR devices.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.UI.VRGraphicRaycaster.eventCamera">
+            <summary>
+            The camera that will generate rays for this raycaster.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRDeviceCapability">
+            <summary>
+            A collection of capabilities for VR devices.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRDeviceCapability.Controller">
+            <summary>
+            Indicates if the device supports at least one controller.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRDeviceCapability.DualController">
+            <summary>
+            Indicates if the device supports at least two controllers.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRDeviceCapability.UserPrescenceDetection">
+            <summary>
+            Indicates if the device supports user-presence detection.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRHeadsetCapability">
+            <summary>
+            A collection of capabilities for VR headsets.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRHeadsetCapability.PositionalTracking">
+            <summary>
+            Indicates if the headset supports positional tracking (true for 6 DOF headsets).
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRHeadsetCapability.ExternalCamera">
+            <summary>
+            Indicates if the headset has an external camera.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRHeadsetCapability.ExternalStereoCamera">
+            <summary>
+            Indicates if the headset has an external stereo camera.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRHeadsetCapability.HeadsetDPad">
+            <summary>
+            True if the device has a digital input pad on the headset itself
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRInputDeviceCapability">
+            <summary>
+            A collection of capabilities for VR input devices.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRInputDeviceCapability.PositionalTracking">
+            <summary>
+            Indicates if an input device has positional tracking (true for 6 DOF input devices).
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRInputDeviceCapability.DirectionalInput">
+            <summary>
+            Indicates if an input device has a directional input method (eg. joystick or touchpad).
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRInputDeviceCapability.Touch">
+            <summary>
+            Indicates if an input device supports touch events (ie. touch-down, touch-up, touching) (true for devices with touchpads).
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRInputDeviceCapability.TriggerButton">
+            <summary>
+            Indicates if the controller has a trigger button.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRInputDeviceCapability.DPad">
+            <summary>
+            Indicates if the controller has a digital input pad.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRInputDeviceCapability.Haptic">
+            <summary>
+            Indicates if the controller supports haptic feedback.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRDevice">
+            <summary>
+            The top level class the manages the VRDevice infrastructure.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.IsInitialized">
+            <summary>
+            Indicates if the the VRDevice framework has been initialized.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.HasDevice">
+            <summary>
+            Indicates if an <see cref="T:Liminal.SDK.VR.IVRDevice"/> has been assigned.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.Device">
+            <summary>
+            Gets the current <see cref="T:Liminal.SDK.VR.IVRDevice"/>. Returns null if there are no active devices.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.DeviceName">
+            <summary>
+            Gets the name of the connected <see cref="T:Liminal.SDK.VR.IVRDevice"/>. Returns null if no devices are connected.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.IsUserPresent">
+            <summary>
+            Determines the presence state of the user.
+            Not all VR devices support this feature and may return a value of <see cref="F:UnityEngine.XR.UserPresenceState.Unsupported"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.XRTrackingSpaceType">
+            <summary>
+            Gets the tracking space type from Unity's XRDevice. Liminal recommends using the <see cref="M:Liminal.SDK.VR.IVRDevice.HasCapabilities(Liminal.SDK.VR.VRDeviceCapability)"/> to determine tracking capabilities of the connected device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.XRModelName">
+            <summary>
+            Gets the model name of the connected from Unity's XRDevice.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VRDevice.RefreshRate">
+            <summary>
+            Gets the refresh rate of the connected VR device from Unity's XRDevice.
+            </summary>
+        </member>
+        <member name="E:Liminal.SDK.VR.VRDevice.Initialized">
+            <summary>
+            Raised when the <see cref="T:Liminal.SDK.VR.VRDevice"/> framework has completed initialization.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.VRDevice.Initialize(Liminal.SDK.VR.IVRDevice)">
+            <summary>
+            Initializes the VRDevice framework for the specified <see cref="T:Liminal.SDK.VR.IVRDevice"/> instance.
+            </summary>
+            <param name="device">The <see cref="T:Liminal.SDK.VR.IVRDevice"/> to initialize.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.VRDevice.LoadXRDevice(System.String)">
+            <summary>
+            Loads the specified VR device into Unity's XR support system.
+            </summary>
+            <returns>The loading task.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.VRDeviceMonitor">
+            <summary>
+            A silent background component that runs coroutines for managing the state of VRDevice.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.VRDeviceMonitor.MonitorInterval">
+            <summary>
+            The rate at which the monitor update cycle will tick.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.VRDeviceMonitor.StartMonitoring">
+            <summary>
+            Begins the device monitoring routine.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.VRDeviceMonitor.StopMonitoring">
+            <summary>
+            Stops the device monitoring routine.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.Input.VRInput">
+            <summary>
+            A helper class that provides information about the input capabilities of the current VR device.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.Input.VRInput.SupportsDualControllers">
+            <summary>
+            Indicates if the current VR input supports dual controllers.
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.CompoundScreenFader.IsFading">
+            <summary>
+            Indicates if a fade is currently in progress.
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.CompoundScreenFader.Faders">
+            <summary>
+            Gets the list of <see cref="T:Liminal.Core.Fader.ScreenFader"/> instances controlled by this compound fader.
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.ImageScreenFader.Image">
+            <summary>
+            Gets or sets the image the fade is applied to.
+            </summary>
+        </member>
+        <member name="T:Liminal.Core.Fader.MeshScreenFader">
+            <summary>
+            ScreenFader implementation adapted from Oculus's OVRScreenFade 
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.ScreenFader.Instance">
+            <summary>
+            Gets the singleton <see cref="T:Liminal.Core.Fader.IScreenFader"/> instance that is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.ScreenFader.IsSingleton">
+            <summary>
+            Indicates if this fader is the Singleton <see cref="T:Liminal.Core.Fader.IScreenFader"/>.
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.ScreenFader.IsFading">
+            <summary>
+            Indicates if a fade is currently in progress.
+            </summary>
+        </member>
+        <member name="P:Liminal.Core.Fader.ScreenFaderBase.IsFading">
+            <summary>
+            Indicates if a fade is currently in progress.
+            </summary>
+        </member>
+        <member name="T:SevenZip.DataErrorException">
+            <summary>
+            The exception that is thrown when an error in input stream occurs during decoding.
+            </summary>
+        </member>
+        <member name="T:SevenZip.InvalidParamException">
+            <summary>
+            The exception that is thrown when the value of an argument is outside the allowable range.
+            </summary>
+        </member>
+        <member name="M:SevenZip.ICodeProgress.SetProgress(System.Int64,System.Int64)">
+            <summary>
+            Callback progress.
+            </summary>
+            <param name="inSize">
+            input size. -1 if unknown.
+            </param>
+            <param name="outSize">
+            output size. -1 if unknown.
+            </param>
+        </member>
+        <member name="M:SevenZip.ICoder.Code(System.IO.Stream,System.IO.Stream,System.Int64,System.Int64,SevenZip.ICodeProgress)">
+            <summary>
+            Codes streams.
+            </summary>
+            <param name="inStream">
+            input Stream.
+            </param>
+            <param name="outStream">
+            output Stream.
+            </param>
+            <param name="inSize">
+            input Size. -1 if unknown.
+            </param>
+            <param name="outSize">
+            output Size. -1 if unknown.
+            </param>
+            <param name="progress">
+            callback progress reference.
+            </param>
+            <exception cref="T:SevenZip.DataErrorException">
+            if input stream is not valid
+            </exception>
+        </member>
+        <member name="T:SevenZip.CoderPropID">
+            <summary>
+            Provides the fields that represent properties idenitifiers for compressing.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.DefaultProp">
+            <summary>
+            Specifies default property.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.DictionarySize">
+            <summary>
+            Specifies size of dictionary.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.UsedMemorySize">
+            <summary>
+            Specifies size of memory for PPM*.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.Order">
+            <summary>
+            Specifies order for PPM methods.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.BlockSize">
+            <summary>
+            Specifies Block Size.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:SevenZip.CoderPropID.PosStateBits" -->
+        <!-- Badly formed XML comment ignored for member "F:SevenZip.CoderPropID.LitContextBits" -->
+        <!-- Badly formed XML comment ignored for member "F:SevenZip.CoderPropID.LitPosBits" -->
+        <member name="F:SevenZip.CoderPropID.NumFastBytes">
+            <summary>
+            Specifies number of fast bytes for LZ*.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.MatchFinder">
+            <summary>
+            Specifies match finder. LZMA: "BT2", "BT4" or "BT4B".
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.MatchFinderCycles">
+            <summary>
+            Specifies the number of match finder cyckes.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.NumPasses">
+            <summary>
+            Specifies number of passes.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.Algorithm">
+            <summary>
+            Specifies number of algorithm.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.NumThreads">
+            <summary>
+            Specifies the number of threads.
+            </summary>
+        </member>
+        <member name="F:SevenZip.CoderPropID.EndMarker">
+            <summary>
+            Specifies mode with end marker.
+            </summary>
+        </member>
+    </members>
+</doc>

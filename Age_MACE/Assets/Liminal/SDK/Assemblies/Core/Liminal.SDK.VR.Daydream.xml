@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liminal.SDK.VR.Daydream</name>
+    </assembly>
+    <members>
+        <member name="T:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamAvatar">
+            <summary>
+            A device-specific implementation of <see cref="T:Liminal.SDK.VR.Avatars.IVRDeviceAvatar"/> to prepare an <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> for Google's Daydream hardware.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamAvatar.SetupGlobalSystems">
+            <summary>
+            Sets up global Daydream systems shared by all avatars throughout the application lifetime.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamAvatar.Avatar">
+            <summary>
+            Gets the <see cref="T:Liminal.SDK.VR.Avatars.IVRAvatar"/> for this device avatar.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamAvatar.InstantiateControllerVisual(Liminal.SDK.VR.Avatars.IVRAvatarLimb)">
+            <summary>
+            Instantiates a <see cref="T:Liminal.SDK.VR.Avatars.Controllers.VRControllerVisual"/> for a limb.
+            </summary>
+            <param name="limb">The limb for the controller.</param>
+            <returns>The newly instantiated controller visual for the specified limb, or null if no controller visual was able to be created.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamControllerInputVisual">
+            <summary>
+            Represents an input visual component on the Daydream Controller.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamControllerInputVisual.Color">
+            <summary>
+            Gets or sets the color of the input visual.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamControllerInputVisual.ResetColor">
+            <summary>
+            Resets the color override of the visual component.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamTrackedControllerProxy.Position">
+            <summary>
+            Gets the world-space position of the tracked object.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamTrackedControllerProxy.Rotation">
+            <summary>
+            Gets the world-space rotation of the tracked object.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamTrackedControllerProxy.IsActive">
+            <summary>
+            Indicates if the tracked object is currently active.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamTrackedControllerProxy.TrackedController">
+            <summary>
+            Gets the assigned <see cref="T:GvrTrackedController"/>.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamTrackedControllerProxy.#ctor(Liminal.SDK.VR.Avatars.IVRAvatar,GvrTrackedController)">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.VR.Devices.DaydreamView.Avatar.DaydreamTrackedControllerProxy"/> for the specified avatar and controller.
+            </summary>
+            <param name="avatar">The avatar that owns the controller.</param>
+            <param name="controller">The tracked controller to wrap.</param>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.DaydreamView.DaydreamViewController">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.Input.IVRInputDevice"/> for the Google Daydream View controller.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.DaydreamView.DaydreamViewDevice">
+            <summary>
+            A concrete implementation of <see cref="T:Liminal.SDK.VR.IVRDevice"/> representing the Google Daydream View (non-standalone headset, requires a VR capable mobile device).
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.DaydreamView.DaydreamViewDevice.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Liminal.SDK.VR.Devices.DaydreamView.DaydreamViewDevice"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

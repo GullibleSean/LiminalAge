@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Liminal.SDK.VR.Emulator</name>
+    </assembly>
+    <members>
+        <member name="T:Liminal.SDK.VR.Devices.Emulator.EmulatorDevice">
+            <summary>
+            A class representing the emulator device type.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Devices.Emulator.EmulatorDevice.DeviceName">
+            <summary>
+            Thed device name 
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.Emulator.EmulatorDevice.#ctor(Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice)">
+            <summary>
+            Creates a new emulator device.
+            </summary>
+            <param name="device">The emulator device type.</param>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.Emulator.EmulatorDevice.CreateDeviceImplementation(Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice)">
+            <summary>
+            Creates the device implementation for the specified emulation method.
+            </summary>
+            <param name="device">The <see cref="T:Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice"/> type.</param>
+            <returns>The <see cref="T:Liminal.SDK.VR.IVRDevice"/> implementation for the specified device.</returns>
+        </member>
+        <member name="M:Liminal.SDK.VR.Devices.Emulator.EmulatorDevice.HasCapabilities(Liminal.SDK.VR.VRDeviceCapability)">
+            <summary>
+            Indicates if the device has a specific set of capabilities using a bitmask of <see cref="T:Liminal.SDK.VR.VRDeviceCapability"/> values.
+            </summary>
+            <param name="capabilities">A bitmask of capabilities to check.</param>
+            <returns>A boolean indicating if the device has all of the specified capabilities.</returns>
+        </member>
+        <member name="T:Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice">
+            <summary>
+            An enumeration of emulator devices available within the editor.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice.None">
+            <summary>
+            No emulation.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice.Daydream">
+            <summary>
+            Google Daydream emulation.
+            </summary>
+        </member>
+        <member name="F:Liminal.SDK.VR.Devices.Emulator.VREmulatorDevice.GearVR">
+            <summary>
+            Samsung GearVR emulation.
+            </summary>
+        </member>
+        <member name="T:Liminal.SDK.VR.VREmulator">
+            <summary>
+            The entry component for initializing the <see cref="T:Liminal.SDK.VR.VRDevice"/> system using emulation for the editor.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VREmulator.EmulatorDevice">
+            <summary>
+            Gets the device type the emulator will attempt emulate.
+            </summary>
+        </member>
+        <member name="P:Liminal.SDK.VR.VREmulator.BuildDevice">
+            <summary>
+            Gets or sets the device type that will be used when the application is built.
+            </summary>
+        </member>
+        <member name="M:Liminal.SDK.VR.VREmulator.CreateDevice">
+            <summary>
+            Creates a new <see cref="T:Liminal.SDK.VR.IVRDevice"/> and returns it.
+            </summary>
+            <returns>The <see cref="T:Liminal.SDK.VR.IVRDevice"/> that was created.</returns>
+        </member>
+    </members>
+</doc>
