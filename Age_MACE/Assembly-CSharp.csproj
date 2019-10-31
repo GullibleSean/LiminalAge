@@ -62,6 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\ControllerTesting.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafColor.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafFalling.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\LightColor.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\TimeManager.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\Wind.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\WindTrigger.cs" />
     <Compile Include="Assets\Liminal\Examples\Scripts\AutoVRAvatarSetup.cs" />
     <Compile Include="Assets\Liminal\Examples\Scripts\ControllerInputExample.cs" />
     <Compile Include="Assets\Liminal\Examples\Scripts\InputHandler.cs" />
