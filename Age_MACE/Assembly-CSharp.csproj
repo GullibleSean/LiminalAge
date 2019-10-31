@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DevsTestFolder\Sean\TestScripts\MEH.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\ControllerTesting.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafColor.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafFalling.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Assets\Liminal\Examples\Scripts\InputHandler.cs" />
     <Compile Include="Assets\Liminal\Excluded\Tests\Test.cs" />
     <Compile Include="Assets\Liminal\Excluded\Tests\TestCube.cs" />
+    <Compile Include="Assets\M.A.C.E\Audio\YIKES.cs" />
+    <Compile Include="Assets\M.A.C.E\Scripts\OOF.cs" />
     <None Include="Assets\Liminal\SDK\Assets\Shaders\LiminalReticle.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\OVRMRUnlitTransparent.shader" />
