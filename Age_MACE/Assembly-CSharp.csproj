@@ -88,6 +88,7 @@
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.GearVR.xml" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Shaders\Unlit Crosshair.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\Unlit Transparent Color.shader" />
+    <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrController.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\OVRMRCameraFrameLit.shader" />
@@ -99,6 +100,7 @@
     <None Include="Assets\Liminal\SDK\Assets\Shaders\LiminalReticleTimer.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrUnlitTextureOverlay.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrControllerReticle.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowCoveredShader.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Emulator.xml" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Plugins\Android\AndroidManifest-Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\OVRMRCameraFrame.shader" />
