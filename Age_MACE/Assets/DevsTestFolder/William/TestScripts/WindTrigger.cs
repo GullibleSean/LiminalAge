@@ -12,7 +12,7 @@ public class WindTrigger : MonoBehaviour
         if (o)
         {
             o.WindIsBlowing();
-            o.SetWindForece(wind.GetComponent<Wind>().GetWindForce());
+            o.SetWindForece(wind.GetComponent<Wind>().GetWindForce()* 0.1f);
         }
     }
 
@@ -22,7 +22,7 @@ public class WindTrigger : MonoBehaviour
         if (o)
         {
             o.WindIsBlowing();
-            o.SetWindForece(wind.GetComponent<Wind>().GetWindForce());
+            o.SetWindForece(wind.GetComponent<Wind>().GetWindForce()* 0.1f);
         }
     }
 

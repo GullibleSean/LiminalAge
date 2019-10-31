@@ -86,7 +86,7 @@ public class LeafColor : MonoBehaviour
             CurrentColor = SpringColor;
         }
 
-        leaf.material.color = CurrentColor;
+        leaf.materials[0].color = CurrentColor;
         leaf.material.SetColor("_Color", CurrentColor);
     }
 }

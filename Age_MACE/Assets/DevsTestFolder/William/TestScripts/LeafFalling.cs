@@ -60,7 +60,7 @@ public class LeafFalling : MonoBehaviour
         {
             if(CDCount > directionChangeCD)
             {
-                var temp = new Vector3(randomX, 0.0f, randomZ);
+                var temp = new Vector3(randomX, 0.1f, randomZ);
                 leaf.GetComponent<Rigidbody>().AddForce(temp);
                 FallReset();
             }
@@ -68,7 +68,7 @@ public class LeafFalling : MonoBehaviour
         }
         else
         {
-            leaf.GetComponent<Rigidbody>().AddForce(windForce * 0.15f);
+            leaf.GetComponent<Rigidbody>().AddForce(windForce * 0.01f);
         }
     }
 }

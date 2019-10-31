@@ -20,9 +20,9 @@ public class Wind : MonoBehaviour
     WindDirection direction;
 
     [SerializeField]
-    float windCD;
+    float windCD = 0;
     [SerializeField]
-    float CDCount;
+    float CDCount = 1;
     [SerializeField]
     float randomX;
     [SerializeField]

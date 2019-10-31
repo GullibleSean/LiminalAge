@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Liminal.SDK.Core;
+using Liminal.Core.Fader;
 
 public class TimeManager : MonoBehaviour
 {
-     public Slider slider;
+     //public Slider slider;
 
     [SerializeField]
     float SummerDuration = 10.0f;
@@ -36,6 +38,10 @@ public class TimeManager : MonoBehaviour
     float WinterStage;
     float WTSStage;
     float SpringStage;
+
+    Color fadeColor;
+    float fadeDuration;
+    bool callFader = false;
 
     public float GetCurrentTime()
     {
@@ -108,13 +114,32 @@ public class TimeManager : MonoBehaviour
         SpringStage = WTSStage + SpringDuration;
     }
 
+    void Fader()
+    {
+        if (callFader == true)
+        {
+            var fader = ScreenFader.Instance;
+            fader.FadeTo(fadeColor, fadeDuration);
+            callFader = false;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(TimeTracker < TotalDuration)
+        if (TimeTracker < (TotalDuration + fadeDuration))
         {
             TimeTracker += Time.deltaTime;
+            if (TimeTracker > TotalDuration)
+            {
+                callFader = true;
+                Fader();
+            }
         }
-        slider.value = TimeTracker / TotalDuration;
+        else
+        {
+            ExperienceApp.End();
+        }
+        //slider.value = TimeTracker / TotalDuration;
     }
 }
