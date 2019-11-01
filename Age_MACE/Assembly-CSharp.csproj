@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DevsTestFolder\Sean\TestScripts\MEH.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\ColorManager.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\ControllerTesting.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafColor.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafFalling.cs" />

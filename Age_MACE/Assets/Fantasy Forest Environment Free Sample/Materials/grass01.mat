@@ -33,6 +33,6 @@ Material:
     - _Shininess: 0.078125
     - _SnowAmount: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.4, g: 1, b: 0.2, a: 1}
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

@@ -6,6 +6,7 @@ public class LeafColor : MonoBehaviour
 {
     public MeshRenderer leaf;
 
+
     public GameObject timeManager;
 
     [SerializeField]
@@ -86,7 +87,7 @@ public class LeafColor : MonoBehaviour
             CurrentColor = SpringColor;
         }
 
-        leaf.material.color = CurrentColor;
-        leaf.material.SetColor("_Color", CurrentColor);
+        leaf.materials[1].color = CurrentColor;
+        //leaf.material.SetColor("_Color", CurrentColor);
     }
 }

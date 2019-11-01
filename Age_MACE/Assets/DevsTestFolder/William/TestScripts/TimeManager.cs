@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
-     public Slider slider;
+    // public Slider slider;
 
     [SerializeField]
     float SummerDuration = 10.0f;
@@ -115,6 +115,6 @@ public class TimeManager : MonoBehaviour
         {
             TimeTracker += Time.deltaTime;
         }
-        slider.value = TimeTracker / TotalDuration;
+        //slider.value = TimeTracker / TotalDuration;
     }
 }
