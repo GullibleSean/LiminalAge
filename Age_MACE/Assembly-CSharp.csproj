@@ -90,6 +90,7 @@
     <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrController.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowCoveredShader_Transparent.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\OVRMRCameraFrameLit.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\GoogleVR\Plugins\Android\AndroidManifest-6DOF.xml" />
