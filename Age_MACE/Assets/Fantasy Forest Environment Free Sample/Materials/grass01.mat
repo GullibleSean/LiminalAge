@@ -24,15 +24,33 @@ Material:
         m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _SnowTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6be9287a2b4512241b7f6a0321c340bf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SurfaceDistortion:
+        m_Texture: {fileID: 2800000, guid: 6be9287a2b4512241b7f6a0321c340bf, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceNoise:
+        m_Texture: {fileID: 2800000, guid: 6be9287a2b4512241b7f6a0321c340bf, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaCutoff: 1
+    - _DepthMaxDistance: 1
+    - _FoamMaxDistance: 0
+    - _FoamMinDistance: 0
     - _Glossiness: 0
     - _Metallic: 0
     - _Shininess: 0.078125
-    - _SnowAmount: 0
+    - _SnowAmount: 0.315
+    - _SurfaceDistortionAmount: 1
+    - _SurfaceNoiseCutoff: 0.788
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DepthGradientDeep: {r: 1, g: 1, b: 1, a: 0.749}
+    - _DepthGradientShallow: {r: 1, g: 1, b: 1, a: 0.725}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SurfaceNoiseScroll: {r: 0, g: 0, b: 0, a: 0}
