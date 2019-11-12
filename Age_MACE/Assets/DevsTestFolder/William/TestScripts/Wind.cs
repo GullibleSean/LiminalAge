@@ -74,10 +74,10 @@ public class Wind : MonoBehaviour
         windCD = Random.Range(6.0f, 10.0f);
         CDCount = 0.0f;
         wind.SetActive(true);
-        wind.transform.localScale -= new Vector3(randomXSize, 0.0f, randomXSize);
+        wind.transform.localScale -= new Vector3(randomXSize, 0f, randomXSize);
         randomXSize = Random.Range(200, 330);
         randomZSize = Random.Range(200, 330);
-        wind.transform.localScale += new Vector3(randomXSize, 0.0f, randomXSize);
+        wind.transform.localScale += new Vector3(randomXSize, 0f, randomXSize);
     }
 
     void WindBorderCheck()
@@ -93,35 +93,35 @@ public class Wind : MonoBehaviour
         switch (direction)
         {
             case WindDirection.North:
-                wind.transform.position = new Vector3(0.0f, transform.position.y, 150.0f);
+                wind.transform.position = new Vector3(0.0f, wind.transform.position.y, 150.0f);
                 windForce = new Vector3(0f, 0f, Random.Range(-windSpeedMin, -windSpeedMax));
                 break;
             case WindDirection.NorthWest:
-                wind.transform.position = new Vector3(-150.0f, transform.position.y, 150.0f);
+                wind.transform.position = new Vector3(-150.0f, wind.transform.position.y, 150.0f);
                 windForce = new Vector3(Random.Range(windSpeedMin, windSpeedMax), 0f, Random.Range(-windSpeedMin, -windSpeedMax));
                 break;
             case WindDirection.West:
-                wind.transform.position = new Vector3(-150.0f, transform.position.y, 0.0f);
+                wind.transform.position = new Vector3(-150.0f, wind.transform.position.y, 0.0f);
                 windForce = new Vector3(Random.Range(windSpeedMin, windSpeedMax), 0f, 0f);
                 break;
             case WindDirection.SouthWest:
-                wind.transform.position = new Vector3(-150.0f, transform.position.y, -150.0f);
+                wind.transform.position = new Vector3(-150.0f, wind.transform.position.y, -150.0f);
                 windForce = new Vector3(Random.Range(windSpeedMin, windSpeedMax), 0f, Random.Range(windSpeedMin, windSpeedMax));
                 break;
             case WindDirection.South:
-                wind.transform.position = new Vector3(0.0f, transform.position.y, -150.0f);
+                wind.transform.position = new Vector3(0.0f, wind.transform.position.y, -150.0f);
                 windForce = new Vector3(0f, 0f, Random.Range(windSpeedMin, windSpeedMax));
                 break;
             case WindDirection.SouthEast:
-                wind.transform.position = new Vector3(150.0f, transform.position.y, -150.0f);
+                wind.transform.position = new Vector3(150.0f, wind.transform.position.y, -150.0f);
                 windForce = new Vector3(Random.Range(-windSpeedMin, -windSpeedMax), 0f, Random.Range(windSpeedMin, windSpeedMax));
                 break;
             case WindDirection.East:
-                wind.transform.position = new Vector3(150.0f, transform.position.y, 0.0f);
+                wind.transform.position = new Vector3(150.0f, wind.transform.position.y, 0.0f);
                 windForce = new Vector3(Random.Range(-windSpeedMin, -windSpeedMax), 0f, 0f);
                 break;
             case WindDirection.NorthEast:
-                wind.transform.position = new Vector3(150.0f, transform.position.y, 150.0f);
+                wind.transform.position = new Vector3(150.0f, wind.transform.position.y, 150.0f);
                 windForce = new Vector3(Random.Range(-windSpeedMin, -windSpeedMax), 0f, Random.Range(-windSpeedMin, -windSpeedMax));
                 break;
         }

@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5818734524897487260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalPosition: {x: 50, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 20, z: 1}
   m_Children:
   - {fileID: 5818734525999343226}
   m_Father: {fileID: 5818734525943533564}
@@ -123,12 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wind: {fileID: 5818734524897487260}
+  direction: 0
   windCD: 0
   CDCount: 0
   randomX: 0
   randomZ: 0
-  windSpeedMin: 50
-  windSpeedMax: 150
 --- !u!1 &5818734525999343225
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +168,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5818734525999343225}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -187,3 +186,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wind: {fileID: 5818734525943533563}
+  currentWindForce: {x: 0, y: 0, z: 0}
