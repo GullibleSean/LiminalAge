@@ -90,6 +90,7 @@
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\Cubemap Blit.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\OVRMRUnlit.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\WaterShader.shader" />
+    <None Include="Assets\DevsTestFolder\Sean\TestMaterials\SnowCoverShader_Sean.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.GearVR.xml" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Shaders\Unlit Crosshair.shader" />
     <None Include="Assets\Liminal\SDK\Frameworks\OVR\Resources\Unlit Transparent Color.shader" />
