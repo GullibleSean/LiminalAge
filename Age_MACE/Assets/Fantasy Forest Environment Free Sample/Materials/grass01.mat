@@ -38,12 +38,13 @@ Material:
     m_Floats:
     - _AlphaCutoff: 1
     - _DepthMaxDistance: 1
+    - _Displacement: 0
     - _FoamMaxDistance: 0
     - _FoamMinDistance: 0
     - _Glossiness: 0
     - _Metallic: 0
     - _Shininess: 0.078125
-    - _SnowAmount: 0.315
+    - _SnowAmount: 0
     - _SurfaceDistortionAmount: 1
     - _SurfaceNoiseCutoff: 0.788
     m_Colors:

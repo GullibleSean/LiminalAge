@@ -66,11 +66,11 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthMaxDistance: 1
+    - _DepthMaxDistance: 15
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FoamMaxDistance: 2.69
-    - _FoamMinDistance: 0.04
+    - _FoamMaxDistance: 8.26
+    - _FoamMinDistance: -0.07
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -81,8 +81,8 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SurfaceDistortionAmount: 0.118
-    - _SurfaceNoiseCutoff: 0
+    - _SurfaceDistortionAmount: 0.82
+    - _SurfaceNoiseCutoff: 0.708
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
