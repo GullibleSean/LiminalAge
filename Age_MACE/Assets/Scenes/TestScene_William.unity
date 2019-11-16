@@ -731,6 +731,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1767003953}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &754234036 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5889912929317204752, guid: 3dbb4f7a6212be24785b05dffbfc8639,
+    type: 3}
+  m_PrefabInstance: {fileID: 4545453428367165463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &793705740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 6eab4412da3b23444974bd5d60c72372,
@@ -1008,7 +1014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1119608053
 Transform:
   m_ObjectHideFlags: 0
@@ -1099,38 +1105,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb06ce54b492dfa4dba092f8bf8769eb, type: 3}
---- !u!1 &1256498792 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: fb06ce54b492dfa4dba092f8bf8769eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1256498791}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1256498793 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: fb06ce54b492dfa4dba092f8bf8769eb,
     type: 3}
   m_PrefabInstance: {fileID: 1256498791}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1256498794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256498792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a76c940a9983340b18bb09496c3208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaf: {fileID: 1256498793}
-  timeManager: {fileID: 1492153221}
-  SummerColor: {r: 0, g: 1, b: 0, a: 1}
-  FallColor: {r: 1, g: 0.4, b: 0, a: 1}
-  WinterColor: {r: 1, g: 1, b: 1, a: 1}
-  SpringColor: {r: 0.4, g: 1, b: 0.2, a: 1}
-  CurrentColor: {r: 0, g: 0, b: 0, a: 0}
-  TimeTracker: 0
 --- !u!4 &1319859498
 Transform:
   m_ObjectHideFlags: 0
@@ -1278,6 +1258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492153222}
   - component: {fileID: 1492153223}
+  - component: {fileID: 1492153224}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -1320,6 +1301,39 @@ MonoBehaviour:
   WintTransSpriDuration: 5
   TotalDuration: 0
   TimeTracker: 0
+--- !u!114 &1492153224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492153221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a76c940a9983340b18bb09496c3208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaf: {fileID: 1256498793}
+  rainParticles:
+  - {fileID: 7974077603829774297}
+  - {fileID: 1726119276}
+  - {fileID: 754234036}
+  - {fileID: 1498790427}
+  snowParticles:
+  - {fileID: 3523122092076388209}
+  leafParticles: []
+  SummerColor: {r: 0, g: 1, b: 0, a: 1}
+  FallColor: {r: 1, g: 0.4, b: 0, a: 1}
+  WinterColor: {r: 1, g: 1, b: 1, a: 1}
+  SpringColor: {r: 0.4, g: 1, b: 0.2, a: 1}
+  CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  TimeTracker: 0
+--- !u!198 &1498790427 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5889912929453790095, guid: 3dbb4f7a6212be24785b05dffbfc8639,
+    type: 3}
+  m_PrefabInstance: {fileID: 4545453428367165463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1528466956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1562,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690815526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!198 &1726119276 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5889912927858010322, guid: 3dbb4f7a6212be24785b05dffbfc8639,
+    type: 3}
+  m_PrefabInstance: {fileID: 4545453428367165463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1767003953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1850,6 +1870,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8608381387575929608}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &3523122092076388209 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5157670108386518117, guid: 2f5557800541e024a802ed94d0b3b643,
+    type: 3}
+  m_PrefabInstance: {fileID: 8608381387575929608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4545453428367165463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1916,6 +1942,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889912929339572165, guid: 3dbb4f7a6212be24785b05dffbfc8639,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dbb4f7a6212be24785b05dffbfc8639, type: 3}
@@ -1999,6 +2030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WindHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818734525943533563, guid: 14cf2675f9d727e4ab5da46ec601ae32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5818734525943533564, guid: 14cf2675f9d727e4ab5da46ec601ae32,
         type: 3}
@@ -2084,6 +2120,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4545453428367165463}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &7974077603829774297 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5889912929339572165, guid: 3dbb4f7a6212be24785b05dffbfc8639,
+    type: 3}
+  m_PrefabInstance: {fileID: 4545453428367165463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8608381387575929608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2150,6 +2192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157670108386518117, guid: 2f5557800541e024a802ed94d0b3b643,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f5557800541e024a802ed94d0b3b643, type: 3}
