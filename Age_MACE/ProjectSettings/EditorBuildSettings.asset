@@ -6,6 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/demoScene.unity
     guid: 7769f33fb4fa2e5458344a36556ad760
+=======
+    path: Assets/Scenes/TestScene_William.unity
+    guid: e16cfe2b626107e4f89a215307746416
+>>>>>>> William
   m_configObjects: {}

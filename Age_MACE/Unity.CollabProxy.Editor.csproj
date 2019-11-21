@@ -251,47 +251,8 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/1740037/Desktop/Age_MACE/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/1740037/Desktop/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/1740037/Desktop/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/1740037/Desktop/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/1740037/Desktop/Age_MACE/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="ResonanceAudio.Editor">
-      <HintPath>Assets/Liminal/SDK/Assemblies/Editor/ResonanceAudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="ResonanceAudio">
-      <HintPath>Assets/Liminal/SDK/Assemblies/Core/ResonanceAudio.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Cecil">
-      <HintPath>Assets/Liminal/SDK/Assemblies/Editor/Unity.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.ProtocolBuffers">
-      <HintPath>Assets/Liminal/SDK/Frameworks/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
-    </Reference>
-    <Reference Include="OVR">
-      <HintPath>Assets/Liminal/SDK/Assemblies/Core/OVR.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets/Liminal/SDK/Plugins/Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Liminal.SDK.VR.Emulator.Editor">
-      <HintPath>Assets/Liminal/SDK/Assemblies/Editor/Liminal.SDK.VR.Emulator.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="GVR">
       <HintPath>Assets/Liminal/SDK/Assemblies/Core/GVR.dll</HintPath>
-    </Reference>
-    <Reference Include="Liminal.SDK.VR.Emulator">
-      <HintPath>Assets/Liminal/SDK/Assemblies/Core/Liminal.SDK.VR.Emulator.dll</HintPath>
     </Reference>
     <Reference Include="Liminal.SDK">
       <HintPath>Assets/Liminal/SDK/Assemblies/Core/Liminal.SDK.dll</HintPath>
@@ -299,17 +260,56 @@
     <Reference Include="Liminal.SDK.VR.Daydream">
       <HintPath>Assets/Liminal/SDK/Assemblies/Core/Liminal.SDK.VR.Daydream.dll</HintPath>
     </Reference>
+    <Reference Include="Liminal.SDK.VR.Emulator">
+      <HintPath>Assets/Liminal/SDK/Assemblies/Core/Liminal.SDK.VR.Emulator.dll</HintPath>
+    </Reference>
     <Reference Include="Liminal.SDK.VR.GearVR">
       <HintPath>Assets/Liminal/SDK/Assemblies/Core/Liminal.SDK.VR.GearVR.dll</HintPath>
     </Reference>
     <Reference Include="Liminal.SDK.VR.Tools">
       <HintPath>Assets/Liminal/SDK/Assemblies/Core/Liminal.SDK.VR.Tools.dll</HintPath>
     </Reference>
+    <Reference Include="OVR">
+      <HintPath>Assets/Liminal/SDK/Assemblies/Core/OVR.dll</HintPath>
+    </Reference>
+    <Reference Include="ResonanceAudio">
+      <HintPath>Assets/Liminal/SDK/Assemblies/Core/ResonanceAudio.dll</HintPath>
+    </Reference>
     <Reference Include="GVR.Editor">
       <HintPath>Assets/Liminal/SDK/Assemblies/Editor/GVR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Liminal.SDK.Editor">
       <HintPath>Assets/Liminal/SDK/Assemblies/Editor/Liminal.SDK.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Liminal.SDK.VR.Emulator.Editor">
+      <HintPath>Assets/Liminal/SDK/Assemblies/Editor/Liminal.SDK.VR.Emulator.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="ResonanceAudio.Editor">
+      <HintPath>Assets/Liminal/SDK/Assemblies/Editor/ResonanceAudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Cecil">
+      <HintPath>Assets/Liminal/SDK/Assemblies/Editor/Unity.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>Assets/Liminal/SDK/Frameworks/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Liminal/SDK/Plugins/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.1.10f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -686,6 +686,8 @@
     <Compile Include="Packages\com.unity.collab-proxy\Editor\Collab\Views\StatusView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowCoveredShader.shader" />
+    <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Emulator.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.GearVR.xml" />
