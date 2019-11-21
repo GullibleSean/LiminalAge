@@ -10,20 +10,20 @@ public class TimeManager : MonoBehaviour
      //public Slider slider;
 
     [SerializeField]
-    float SummerDuration = 10.0f;
+    float SummerDuration = 45.0f;
     [SerializeField]
-    float FallDuration = 10.0f;
+    float FallDuration = 45.0f;
     [SerializeField]
-    float WinterDuration = 10.0f;
+    float WinterDuration = 45.0F;
     [SerializeField]
-    float SpringDuration = 10.0f;
+    float SpringDuration = 45.0f;
 
     [SerializeField]
-    float SummTransFallDuration = 5.0f;
+    float SummTransFallDuration = 15.0f;
     [SerializeField]
-    float FallTransWintDuration = 5.0f;
+    float FallTransWintDuration = 15.0f;
     [SerializeField]
-    float WintTransSpriDuration = 5.0f;
+    float WintTransSpriDuration = 15.0f;
 
     [SerializeField]
     float TotalDuration;
