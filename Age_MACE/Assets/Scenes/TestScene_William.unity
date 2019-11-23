@@ -1248,86 +1248,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d652173cb4d4f4439b74d4d4e4de8b7, type: 3}
---- !u!1 &1492153221
+--- !u!1 &1492153221 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2488953011414105864, guid: 59ee871b248f1d14799a580ea908ea73,
+    type: 3}
+  m_PrefabInstance: {fileID: 2488953012606307469}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1492153222}
-  - component: {fileID: 1492153224}
-  - component: {fileID: 1492153223}
-  m_Layer: 0
-  m_Name: TimeManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1492153222
+--- !u!4 &1492153222 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+    type: 3}
+  m_PrefabInstance: {fileID: 2488953012606307469}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492153221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 982296900}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1492153223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492153221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015acf17e5cdc244ca1dc2f5137fb9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SummerDuration: 10
-  FallDuration: 10
-  WinterDuration: 10
-  SpringDuration: 10
-  SummTransFallDuration: 5
-  FallTransWintDuration: 5
-  WintTransSpriDuration: 5
-  TotalDuration: 0
-  TimeTracker: 0
---- !u!114 &1492153224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492153221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a76c940a9983340b18bb09496c3208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaf: {fileID: 1256498793}
-  rainParticles:
-  - {fileID: 7974077603829774297}
-  - {fileID: 1726119276}
-  - {fileID: 754234036}
-  - {fileID: 1498790427}
-  snowParticles:
-  - {fileID: 3523122092076388209}
-  leafParticles: []
-  SummerColor: {r: 0, g: 1, b: 0, a: 1}
-  FallColor: {r: 1, g: 0.4, b: 0, a: 1}
-  WinterColor: {r: 1, g: 1, b: 1, a: 1}
-  SpringColor: {r: 0.4, g: 1, b: 0.2, a: 1}
-  CurrentColor: {r: 0, g: 0, b: 0, a: 0}
-  TimeTracker: 0
 --- !u!198 &1498790427 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5889912929453790095, guid: 3dbb4f7a6212be24785b05dffbfc8639,
@@ -1858,6 +1790,105 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1256498791}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2488953012606307469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 982296900}
+    m_Modifications:
+    - target: {fileID: 2488953011414105864, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_Name
+      value: TimeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105867, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488953011414105861, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: leaf
+      value: 
+      objectReference: {fileID: 1256498793}
+    - target: {fileID: 2488953011414105861, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: rainParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 7974077603829774297}
+    - target: {fileID: 2488953011414105861, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: rainParticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1726119276}
+    - target: {fileID: 2488953011414105861, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: rainParticles.Array.data[2]
+      value: 
+      objectReference: {fileID: 754234036}
+    - target: {fileID: 2488953011414105861, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: rainParticles.Array.data[3]
+      value: 
+      objectReference: {fileID: 1498790427}
+    - target: {fileID: 2488953011414105861, guid: 59ee871b248f1d14799a580ea908ea73,
+        type: 3}
+      propertyPath: snowParticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 3523122092076388209}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59ee871b248f1d14799a580ea908ea73, type: 3}
 --- !u!1 &3523122092076388206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5157670108386518118, guid: 2f5557800541e024a802ed94d0b3b643,

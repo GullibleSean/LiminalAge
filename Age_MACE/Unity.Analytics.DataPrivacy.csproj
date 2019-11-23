@@ -291,19 +291,19 @@
       <HintPath>Assets/Liminal/SDK/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/1840549/Desktop/age/LiminalAge/Age_MACE/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.1.10f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -657,7 +657,11 @@
     <Compile Include="Packages\com.unity.analytics\DataPrivacy\DataPrivacyButton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowCoveredShader.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\Shaders\AdvancedSnowShader.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\Shaders\SnowCoveredShader.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\Shaders\SnowCoveredShader_Transparent.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowShader_Impoved.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\WaterShader.shader" />
     <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Emulator.xml" />
@@ -716,6 +720,8 @@
     <None Include="Packages\com.unity.timeline\Runtime\Unity.Timeline.asmdef" />
     <None Include="Packages\com.unity.timeline\Tests\Editor\Unity.Timeline.Package.EditorTests.asmdef" />
     <None Include="Packages\com.unity.timeline\Tests\PlayMode\Unity.Timeline.Package.Tests.asmdef" />
+    <None Include="Packages\com.unity.xr.oculus.android\Editor\Unity.XR.Oculus.Editor.asmdef" />
+    <None Include="Packages\com.unity.xr.oculus.android\Tests\Editor\Unity.XR.Oculus.Android.EditorTests.asmdef" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
