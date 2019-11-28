@@ -261,13 +261,13 @@
       <HintPath>Assets/Liminal/SDK/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.1.10f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -634,12 +634,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
     <Compile Include="Assets\DevsTestFolder\Sean\TestScripts\MEH.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\ColorManager.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\ControllerTesting.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\EventHandler.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\FloatingRock.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\LeafFalling.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\LightColor.cs" />
+    <Compile Include="Assets\DevsTestFolder\William\TestScripts\StarRotation.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\TimeManager.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\Wind.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\WindTrigger.cs" />
@@ -657,6 +660,9 @@
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\Shaders\SnowCoveredShader_Transparent.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowShader_Impoved.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\WaterShader.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\Blend SM2.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\Blend SM3.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\shader info.txt" />
     <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Emulator.xml" />

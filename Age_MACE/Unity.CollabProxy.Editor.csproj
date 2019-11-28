@@ -297,19 +297,19 @@
       <HintPath>Assets/Liminal/SDK/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>D:/M.A.C.E/Age_MACE/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.1.10f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -691,6 +691,9 @@
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\Shaders\SnowCoveredShader_Transparent.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\SnowShader_Impoved.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestMaterials\WaterShader.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\Blend SM2.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\Blend SM3.shader" />
+    <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\shader info.txt" />
     <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Emulator.xml" />
