@@ -6,6 +6,14 @@ public class EventHandler : MonoBehaviour
 {
     public MeshRenderer leaf;
 
+    public MeshRenderer grass;
+
+    public Material daySky;
+    public Light sun;
+    public Material nightSky;
+
+    private MeshRenderer[] subGrass;
+
     public ParticleSystem[] rainParticles;
 
     public ParticleSystem[] snowParticles;
@@ -41,6 +49,7 @@ public class EventHandler : MonoBehaviour
 
     int rainParticleRate;
     int snowParticleRate;
+    int leafParticleRate;
 
     void DisableParticles(ParticleSystem[] particles)
     {
@@ -73,8 +82,8 @@ public class EventHandler : MonoBehaviour
     void Start()
     {
         TimeTracker = 0.0f;
-        rainParticleRate = 0;
-        snowParticleRate = 0;
+
+        subGrass = grass.GetComponentsInChildren<MeshRenderer>();
 
         STF_Color = (FallColor - SummerColor) / GetComponent<TimeManager>().GetSTFDuration();
         FTW_Color = (WinterColor - FallColor) / GetComponent<TimeManager>().GetFTWDuration();
@@ -88,8 +97,16 @@ public class EventHandler : MonoBehaviour
         Stage6 = GetComponent<TimeManager>().GetWTSStage();
         Stage7 = GetComponent<TimeManager>().GetSpringStage();
 
+
+        rainParticleRate = 0;
+        snowParticleRate = 0;
+        leafParticleRate = 0;
+
         DisableParticles(snowParticles);
         DisableParticles(rainParticles);
+        DisableParticles(leafParticles);
+
+        RenderSettings.skybox = daySky;
     }
 
     void FixedUpdate()
@@ -98,27 +115,32 @@ public class EventHandler : MonoBehaviour
         if (TimeTracker < Stage1)
         {
             CurrentColor = SummerColor;
-        }
-        else if (TimeTracker < Stage2)
-        {
-            CurrentColor += STF_Color * Time.deltaTime;
-            rainParticleRate = 0;
-        }
-        else if (TimeTracker < Stage3)
-        {
-            CurrentColor = FallColor;
 
             EnableParticles(rainParticles);
             rainParticleRate++;
             SetParticlesRateOverTime(rainParticles, rainParticleRate);
         }
+        else if (TimeTracker < Stage2)
+        {
+            CurrentColor += STF_Color * Time.deltaTime;
+
+            rainParticleRate -= 10;
+            SetParticlesRateOverTime(rainParticles, rainParticleRate);
+        }
+        else if (TimeTracker < Stage3)
+        {
+            CurrentColor = FallColor;
+
+            EnableParticles(leafParticles);
+            leafParticleRate++;
+            SetParticlesRateOverTime(leafParticles, leafParticleRate);
+        }
         else if (TimeTracker < Stage4)
         { 
             CurrentColor += FTW_Color * Time.deltaTime;
 
-
-            rainParticleRate -= 10;
-            SetParticlesRateOverTime(rainParticles, rainParticleRate);
+            leafParticleRate -= 10;
+            SetParticlesRateOverTime(leafParticles, leafParticleRate);
         }
         else if (TimeTracker < Stage5)
         {
@@ -140,9 +162,16 @@ public class EventHandler : MonoBehaviour
         {
             DisableParticles(snowParticles);
             CurrentColor = SpringColor;
+
+            RenderSettings.skybox = nightSky;
+            sun.gameObject.SetActive(false);
         }
 
         leaf.materials[0].color = CurrentColor;
-        leaf.material.SetColor("_Color", CurrentColor);
+        grass.material.color = CurrentColor;
+        foreach (var grass in subGrass)
+        {
+            grass.material.color = CurrentColor;
+        }
     }
 }
