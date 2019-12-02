@@ -694,7 +694,12 @@
     <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\Blend SM2.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\Blend SM3.shader" />
     <None Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\shader info.txt" />
+    <None Include="Assets\DevsTestFolder\Sean\TestMaterials\Aurora\DarkAndStormy\PostProcess\HiddenPostProcess.shader" />
+    <None Include="Assets\DevsTestFolder\Sean\TestMaterials\Aurora\DarkAndStormy\Shaders\Clouds.shader" />
+    <None Include="Assets\DevsTestFolder\Sean\TestMaterials\Aurora\DarkAndStormy\Shaders\FogInclude.cginc" />
+    <None Include="Assets\DevsTestFolder\Sean\TestMaterials\Aurora\DarkAndStormy\Shaders\Terrain.shader" />
     <None Include="Assets\Fantasy Forest Environment Free Sample\StandardNoCulling.shader" />
+    <None Include="Assets\FantasyEnvironments\Environments\README.txt" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Daydream.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.Emulator.xml" />
     <None Include="Assets\Liminal\SDK\Assemblies\Core\Liminal.SDK.VR.GearVR.xml" />

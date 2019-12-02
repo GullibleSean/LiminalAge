@@ -2887,7 +2887,7 @@ MonoBehaviour:
   grass: {fileID: 227471406}
   daySky: {fileID: 2100000, guid: efe4e4fe8bd69044ba7de42ca144076b, type: 2}
   sun: {fileID: 1977843882}
-  nightSky: {fileID: 2100000, guid: fb3fe2ede0cecc9419603719a20c89cd, type: 2}
+  nightSky: {fileID: 2100000, guid: cb461174653fa3e4fbbf306c2d4e914e, type: 2}
   rainParticles:
   - {fileID: 1554869898}
   - {fileID: 574073173}
