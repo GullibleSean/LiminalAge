@@ -5,12 +5,16 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public TimeManager timeManager;
-    public AudioSource[] clips;
+    AudioSource audioSource;
+    public AudioClip[] clips;
+    public float[] audioStartTimes;
     bool[] areClipsPlayed;
+    int currentIndex;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         areClipsPlayed = new bool[clips.Length];
         for (int i = 0; i < areClipsPlayed.Length; i++)
         {
@@ -21,10 +25,20 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((timeManager.GetCurrentTime() < 45) && (areClipsPlayed[0] == false))
+        if (timeManager.GetCurrentTime() > audioStartTimes[currentIndex])
         {
-            clips[0].Play(0);
-            areClipsPlayed[0] = true;
+            currentIndex++;
         }
+        if (!areClipsPlayed[currentIndex])
+            PlayClip(currentIndex);
+
+    }
+
+    void PlayClip(int index)
+    {
+        audioSource.clip = clips[index];
+        audioSource.Play(0);
+        areClipsPlayed[index] = true;
+        Debug.Log("Play clip called");
     }
 }

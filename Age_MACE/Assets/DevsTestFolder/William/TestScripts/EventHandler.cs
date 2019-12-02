@@ -73,6 +73,11 @@ public class EventHandler : MonoBehaviour
     {
         foreach (var particle in particles)
         {
+            if(particle.GetComponent<LeafFalling>())
+            {
+                var main = particle.main;
+                main.startColor = CurrentColor;
+            }
             var emission = particle.emission;
             emission.rateOverTime = rate;
         }
