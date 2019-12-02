@@ -27,7 +27,8 @@ public class AudioManager : MonoBehaviour
     {
         if (timeManager.GetCurrentTime() > audioStartTimes[currentIndex])
         {
-            currentIndex++;
+            if(currentIndex < (clips.Length-1))
+                currentIndex++;
         }
         if (!areClipsPlayed[currentIndex])
             PlayClip(currentIndex);
