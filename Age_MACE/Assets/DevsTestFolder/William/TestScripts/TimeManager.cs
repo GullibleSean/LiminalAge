@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField]
     float WinterDuration = 45.0F;
     [SerializeField]
-    float SpringDuration = 45.0f;
+    float SpringDuration = 60.0f;
 
     [SerializeField]
     float SummTransFallDuration = 15.0f;
@@ -24,6 +24,8 @@ public class TimeManager : MonoBehaviour
     float FallTransWintDuration = 15.0f;
     [SerializeField]
     float WintTransSpriDuration = 15.0f;
+    [SerializeField]
+    float DayTransNightDuration = 10.0f;
 
     [SerializeField]
     float TotalDuration;
@@ -63,6 +65,10 @@ public class TimeManager : MonoBehaviour
         return WintTransSpriDuration;
     }
 
+    public float GetDTNDuration()
+    {
+        return DayTransNightDuration;
+    }
 
     public float GetSummerStage()
     {
