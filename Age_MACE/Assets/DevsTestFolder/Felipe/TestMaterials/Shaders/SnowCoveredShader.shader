@@ -74,11 +74,23 @@
 
         void surf (Input IN, inout SurfaceOutput o)
         {
+			/*
 			//Get the dot product between worldNormal and _SnowDirection, dots return the co sine from two normalized vectors
 			float snowCoverage = (dot(IN.worldNormal, _SnowDirection) + 1) / 2;// Get a range from 0 to 1 for snow coverage (0 = no snow/ 1 = full snow)
 			snowCoverage = 1 - snowCoverage;
 
 			float snowStrength = snowCoverage < _SnowAmount;
+			*/
+
+			//Get the dot product between worldNormal and _SnowDirection, dots return the co sine from two normalized vectors
+			float snowCoverage = (dot(IN.worldNormal, _SnowDirection) + 1) /2;// Get a range from 0 to 1 for snow coverage (0 = no snow/ 1 = full snow)			
+				snowCoverage = 1 - snowCoverage;
+
+			//float snowStrength = snowCoverage <  _SnowAmount  / 2;// < _SnowAmount;
+			float snowStrength = snowCoverage < _SnowAmount / 2;// < _SnowAmount;
+			//float snowStrength = (_SnowAmount / 2) / snowCoverage  ;// < _SnowAmount;
+
+
 
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
