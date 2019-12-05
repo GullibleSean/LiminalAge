@@ -107,7 +107,7 @@ public class EventHandler : MonoBehaviour
         WTS_Color = (SpringColor - WinterColor) / GetComponent<TimeManager>().GetWTSDuration();
         DTNDuration = GetComponent<TimeManager>().GetDTNDuration();
         DTNSky_Color = (nightSky.GetColor("_SkyTint") - daySky.GetColor("_SkyTint")) / DTNDuration;
-        DTNGround_Color = (nightSky.GetColor("_Ground") - daySky.GetColor("_Ground")) / DTNDuration;
+        //DTNGround_Color = (nightSky.GetColor("_Ground") - daySky.GetColor("_Ground")) / DTNDuration;
         DTNAtmosphereThickness = (nightSky.GetFloat("_AtmosphereThickness") - daySky.GetFloat("_AtmosphereThickness")) / DTNDuration;
 
         Stage1 = GetComponent<TimeManager>().GetSummerStage();
@@ -129,7 +129,7 @@ public class EventHandler : MonoBehaviour
 
         RenderSettings.skybox = daySky;
         SkyTintColor = daySky.GetColor("_SkyTint");
-        SkyGroundColor = daySky.GetColor("_Ground");
+        //SkyGroundColor = daySky.GetColor("_Ground");
         SkyAtmoSpehereThickness = daySky.GetFloat("_AtmosphereThickness");
 
         SkyOriginalTintColor = SkyTintColor;
@@ -192,7 +192,7 @@ public class EventHandler : MonoBehaviour
                 SkyGroundColor += DTNGround_Color * Time.deltaTime;
                 SkyAtmoSpehereThickness += DTNAtmosphereThickness * Time.deltaTime;
                 RenderSettings.skybox.SetColor("_SkyTint", SkyTintColor);
-                RenderSettings.skybox.SetColor("_Ground", SkyGroundColor);
+                //RenderSettings.skybox.SetColor("_Ground", SkyGroundColor);
                 RenderSettings.skybox.SetFloat("_AtmosphereThickness", SkyAtmoSpehereThickness);
             }
         }
@@ -205,7 +205,7 @@ public class EventHandler : MonoBehaviour
             RenderSettings.skybox = nightSky;
             sun.gameObject.SetActive(false);
             daySky.SetColor("_SkyTint", SkyOriginalTintColor);
-            daySky.SetColor("_Ground", SkyOriginalGroundColor);
+            //daySky.SetColor("_Ground", SkyOriginalGroundColor);
             daySky.SetFloat("_AtmosphereThickness", SkyOriginalAtmosphereThickness);
         }
 
