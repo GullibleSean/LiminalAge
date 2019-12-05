@@ -387,6 +387,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c0ae2a8729d2d439738e7e99f13092, type: 3}
+--- !u!23 &197382218 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 5b6de22205d83f648af4c7b3a94dff29,
+    type: 3}
+  m_PrefabInstance: {fileID: 1832744334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &201553478 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 8ad7de410f3d53b4997616fa7ec8fc2d,
@@ -467,12 +473,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4243724423293762, guid: c07f24e35f07ce74ba43afa35d48adf7,
     type: 3}
   m_PrefabInstance: {fileID: 201746982}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &227471406 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 5b6ab064c76c06e44859ff0127d54f0d,
-    type: 3}
-  m_PrefabInstance: {fileID: 588609774}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &240165417
 PrefabInstance:
@@ -1292,6 +1292,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61685b42a2360fb4781f0131e52b00a7, type: 3}
+--- !u!23 &523648848 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 9ba308b5c6c434448aca67a1de2d702f,
+    type: 3}
+  m_PrefabInstance: {fileID: 371600712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &540260571 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 0a35b3de682c2c5499030b842528d847,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109344104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &574073173 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5889912927858010322, guid: 3dbb4f7a6212be24785b05dffbfc8639,
@@ -3120,6 +3132,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433596793}
   m_CullTransparentMesh: 0
+--- !u!23 &1470399142 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 9a7ac57b4cc3ebd40889b04d3b696e88,
+    type: 3}
+  m_PrefabInstance: {fileID: 933772470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1518979178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,6 +4547,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2057040915}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &2057040917 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 4d47aa75518890f4e928ed21fb4b3672,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057040915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2110990525
 GameObject:
   m_ObjectHideFlags: 0
@@ -4575,11 +4599,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a76c940a9983340b18bb09496c3208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaf: {fileID: 201553478}
-  grass: {fileID: 227471406}
+  leaf1: {fileID: 1470399142}
+  leaf2: {fileID: 540260571}
+  leaf3: {fileID: 197382218}
+  leaf4: {fileID: 523648848}
+  BigTree: {fileID: 201553478}
+  grass: {fileID: 2057040917}
   daySky: {fileID: 2100000, guid: efe4e4fe8bd69044ba7de42ca144076b, type: 2}
   sun: {fileID: 1977843882}
-  nightSky: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
+  nightSky: {fileID: 2100000, guid: fb3fe2ede0cecc9419603719a20c89cd, type: 2}
   rainParticles:
   - {fileID: 1554869898}
   - {fileID: 574073173}
