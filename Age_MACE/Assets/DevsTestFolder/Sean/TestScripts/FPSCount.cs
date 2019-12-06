@@ -1,18 +1,44 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class FPSCount : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    TextMesh text;
+
+    [SerializeField]
+    float fpsSampleRange = 10;
+
+    private Queue<float> previousFPSvalues;
+
+    private void Awake()
     {
-        
+        previousFPSvalues = new Queue<float>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float fps = (1f / Time.unscaledDeltaTime);
+
+        if (previousFPSvalues.Count >= fpsSampleRange)
+            previousFPSvalues.Dequeue();
+
+        previousFPSvalues.Enqueue(fps);
+
+        float averageFPS = 0;
+
+        foreach (float value in previousFPSvalues)
+        {
+            averageFPS += value;
+        }
+
+        averageFPS /= previousFPSvalues.Count;
+
+        text.text = averageFPS.ToString("F1");
+
+        print("fpsSampleRange" + fpsSampleRange);
+        print("previousFPSvalue" + previousFPSvalues);
+        print("unscaledDeltaTime" + Time.unscaledDeltaTime);
+        print("averageFPS" + averageFPS);
     }
 }
