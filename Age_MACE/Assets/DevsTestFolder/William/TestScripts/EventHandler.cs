@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class EventHandler : MonoBehaviour
 {
-    public MeshRenderer leaf1;
-    public MeshRenderer leaf2;
-    public MeshRenderer leaf3;
-    public MeshRenderer leaf4;
+    public MeshRenderer[] leaves;
 
     public MeshRenderer BigTree;
 
@@ -217,10 +214,11 @@ public class EventHandler : MonoBehaviour
             auroraParticles.SetActive(true);
         }
 
-        leaf1.materials[1].color = CurrentColor;
-        leaf2.materials[1].color = CurrentColor;
-        leaf3.materials[1].color = CurrentColor;
-        leaf4.materials[1].color = CurrentColor;
+        foreach (var leaf in leaves)
+        {
+            leaf.materials[1].color = CurrentColor;
+        }
+
         BigTree.materials[0].color = CurrentColor;
         grass.material.color = CurrentColor;
         foreach (var grass in subGrass)
