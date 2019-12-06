@@ -25,14 +25,13 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeManager.GetCurrentTime() > audioStartTimes[currentIndex])
+        if (timeManager.GetCurrentTime() > audioStartTimes[currentIndex+1])
         {
             if(currentIndex < (clips.Length-1))
                 currentIndex++;
         }
         if (!areClipsPlayed[currentIndex])
             PlayClip(currentIndex);
-
     }
 
     void PlayClip(int index)

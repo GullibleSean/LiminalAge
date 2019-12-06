@@ -7,87 +7,43 @@ public class LightColor : MonoBehaviour
     Light lt;
 
     public GameObject timeManager;
-
     [SerializeField]
-    Color SummerColor = new Color(1.0f, 1.0f, 0f);
+    Color startColor = new Color(255f, 153f, 0f);
     [SerializeField]
-    Color FallColor = new Color(1.0f, 0.4f, 0f);
+    Color midColor = new Color(255f, 255f, 204f);
     [SerializeField]
-    Color WinterColor = new Color(1.0f, 1.0f, 1.0f);
-    [SerializeField]
-    Color SpringColor = new Color(1.0f, 1.0f, 0.6f);
-
+    Color EndColor = new Color(1f, 0f, 0f);
     [SerializeField]
     Color CurrentColor;
 
-    Color STF_Color;
-    Color FTW_Color;
-    Color WTS_Color;
+    Color STM_Color;
+    Color MTE_Color;
 
     [SerializeField]
     float TimeTracker;
 
-    float Stage1;
-    float Stage2;
-    float Stage3;
-    float Stage4;
-    float Stage5;
-    float Stage6;
-    float Stage7;
-
-    void Start()
+    void Awake()
     {
         lt = GetComponent<Light>();
         TimeTracker = 0.0f;
-
-        STF_Color = (FallColor - SummerColor) / timeManager.GetComponent<TimeManager>().GetSTFDuration();
-        FTW_Color = (WinterColor - FallColor) / timeManager.GetComponent<TimeManager>().GetFTWDuration();
-        WTS_Color = (SpringColor - WinterColor) / timeManager.GetComponent<TimeManager>().GetWTSDuration();
-
-        Stage1 = timeManager.GetComponent<TimeManager>().GetSummerStage();
-        Stage2 = timeManager.GetComponent<TimeManager>().GetSTFStage();
-        Stage3 = timeManager.GetComponent<TimeManager>().GetFallStage();
-        Stage4 = timeManager.GetComponent<TimeManager>().GetFTWStage();
-        Stage5 = timeManager.GetComponent<TimeManager>().GetWinterStage();
-        Stage6 = timeManager.GetComponent<TimeManager>().GetWTSStage();
-        Stage7 = timeManager.GetComponent<TimeManager>().GetSpringStage();
+        STM_Color = (midColor - startColor) / 60f;
+        MTE_Color = (EndColor - midColor) / 60f;
+        CurrentColor = startColor;
     }
 
     // Darken the light completely over a period of 10 seconds.
-    void Update()
+    void FixedUpdate()
     {
         TimeTracker = timeManager.GetComponent<TimeManager>().GetCurrentTime();
-        if (TimeTracker < Stage1)
+        if(TimeTracker < 60f)
         {
-            CurrentColor = SummerColor;
+            CurrentColor += STM_Color * Time.deltaTime;
         }
-        else if (TimeTracker < Stage2)
+        else if(TimeTracker <= 120f)
         {
-            CurrentColor +=  STF_Color * Time.deltaTime;
-        }
-        else if (TimeTracker < Stage3)
-        {
-            CurrentColor = FallColor;
-        }
-        else if (TimeTracker < Stage4)
-        {
-            CurrentColor += FTW_Color * Time.deltaTime;
-        }
-        else if (TimeTracker < Stage5)
-        {
-            CurrentColor = WinterColor;
-        }
-        else if (TimeTracker < Stage6)
-        {
-            CurrentColor +=  WTS_Color * Time.deltaTime;
-        }
-        else if (TimeTracker < Stage7)
-        {
-            CurrentColor = SpringColor;
+            CurrentColor += MTE_Color * Time.deltaTime;
         }
 
         lt.color = CurrentColor;
-
-        RenderSettings.skybox.SetColor("_SkyTint", CurrentColor);
     }
 }

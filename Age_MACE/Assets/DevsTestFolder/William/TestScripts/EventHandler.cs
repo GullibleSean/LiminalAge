@@ -25,10 +25,14 @@ public class EventHandler : MonoBehaviour
 
     public ParticleSystem[] leafParticles;
 
+    public GameObject fogParticles;
+
+    public GameObject auroraParticles;
+
     [SerializeField]
-    Color SummerColor = new Color(0f, 1.0f, 0f);
+    Color SummerColor = new Color(1f, 1.0f, 0f);
     [SerializeField]
-    Color FallColor = new Color(1.0f, 0.4f, 0f);
+    Color FallColor = new Color(1.0f, 0f, 0f);
     [SerializeField]
     Color WinterColor = new Color(1.0f, 1.0f, 1.0f);
     [SerializeField]
@@ -42,15 +46,13 @@ public class EventHandler : MonoBehaviour
     Color WTS_Color;
 
     Color DTNSky_Color;
-    Color DTNGround_Color;
     float DTNAtmosphereThickness;
+
     Color SkyTintColor;
-    Color SkyGroundColor;
     float SkyAtmoSpehereThickness;
 
     Color SkyOriginalTintColor;
-    Color SkyOriginalGroundColor;
-    float SkyOriginalAtmosphereThickness;
+    float SkyOriginalAtmosphereThickness;   
 
     [SerializeField]
     float TimeTracker;
@@ -112,7 +114,6 @@ public class EventHandler : MonoBehaviour
         WTS_Color = (SpringColor - WinterColor) / GetComponent<TimeManager>().GetWTSDuration();
         DTNDuration = GetComponent<TimeManager>().GetDTNDuration();
         DTNSky_Color = (nightSky.GetColor("_SkyTint") - daySky.GetColor("_SkyTint")) / DTNDuration;
-        //DTNGround_Color = (nightSky.GetColor("_Ground") - daySky.GetColor("_Ground")) / DTNDuration;
         DTNAtmosphereThickness = (nightSky.GetFloat("_AtmosphereThickness") - daySky.GetFloat("_AtmosphereThickness")) / DTNDuration;
 
         Stage1 = GetComponent<TimeManager>().GetSummerStage();
@@ -131,14 +132,14 @@ public class EventHandler : MonoBehaviour
         DisableParticles(snowParticles);
         DisableParticles(rainParticles);
         DisableParticles(leafParticles);
+        fogParticles.SetActive(false);
+        auroraParticles.SetActive(false);
 
         RenderSettings.skybox = daySky;
         SkyTintColor = daySky.GetColor("_SkyTint");
-        //SkyGroundColor = daySky.GetColor("_Ground");
         SkyAtmoSpehereThickness = daySky.GetFloat("_AtmosphereThickness");
 
         SkyOriginalTintColor = SkyTintColor;
-        SkyOriginalGroundColor = SkyGroundColor;
         SkyOriginalAtmosphereThickness = SkyAtmoSpehereThickness;
     }
 
@@ -174,15 +175,30 @@ public class EventHandler : MonoBehaviour
 
             leafParticleRate -= 10;
             SetParticlesRateOverTime(leafParticles, leafParticleRate);
+
+            if (TimeTracker > (Stage4 - DTNDuration))
+            {
+                SkyTintColor += DTNSky_Color * Time.deltaTime;
+                SkyAtmoSpehereThickness += DTNAtmosphereThickness * Time.deltaTime;
+                RenderSettings.skybox.SetColor("_SkyTint", SkyTintColor);
+                RenderSettings.skybox.SetFloat("_AtmosphereThickness", SkyAtmoSpehereThickness);
+            }
         }
         else if (TimeTracker < Stage5)
         {
             CurrentColor = WinterColor;
 
+            fogParticles.SetActive(true);
+
             DisableParticles(rainParticles);
             EnableParticles(snowParticles);
             snowParticleRate++;
             SetParticlesRateOverTime(snowParticles, snowParticleRate);
+
+            RenderSettings.skybox = nightSky;
+            sun.gameObject.SetActive(false);
+            daySky.SetColor("_SkyTint", SkyOriginalTintColor);
+            daySky.SetFloat("_AtmosphereThickness", SkyOriginalAtmosphereThickness);
         }
         else if (TimeTracker < Stage6)
         {
@@ -191,27 +207,14 @@ public class EventHandler : MonoBehaviour
             snowParticleRate -= 10;
             SetParticlesRateOverTime(snowParticles, snowParticleRate);
 
-            if (TimeTracker > (Stage6 - DTNDuration))
-            {
-                SkyTintColor += DTNSky_Color * Time.deltaTime;
-                SkyGroundColor += DTNGround_Color * Time.deltaTime;
-                SkyAtmoSpehereThickness += DTNAtmosphereThickness * Time.deltaTime;
-                RenderSettings.skybox.SetColor("_SkyTint", SkyTintColor);
-                //RenderSettings.skybox.SetColor("_Ground", SkyGroundColor);
-                RenderSettings.skybox.SetFloat("_AtmosphereThickness", SkyAtmoSpehereThickness);
-            }
+            fogParticles.SetActive(false);
         }
         else if (TimeTracker < Stage7)
         {
             DisableParticles(snowParticles);
             CurrentColor = SpringColor;
 
-            //RenderSettings.skybox.SetColor("_SkyTint", default);
-            RenderSettings.skybox = nightSky;
-            sun.gameObject.SetActive(false);
-            daySky.SetColor("_SkyTint", SkyOriginalTintColor);
-            //daySky.SetColor("_Ground", SkyOriginalGroundColor);
-            daySky.SetFloat("_AtmosphereThickness", SkyOriginalAtmosphereThickness);
+            auroraParticles.SetActive(true);
         }
 
         leaf1.materials[1].color = CurrentColor;
