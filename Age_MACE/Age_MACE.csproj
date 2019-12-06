@@ -261,13 +261,13 @@
       <HintPath>Assets/Liminal/SDK/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/M.A.C.E_Age/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/M.A.C.E_Age/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/1740037/Desktop/VR/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/M.A.C.E_Age/Age_MACE/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.1.10f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -637,6 +637,9 @@
     <Compile Include="Assets\DevsTestFolder\Felipe\TestPrefabs\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
     <Compile Include="Assets\DevsTestFolder\Sean\TestMaterials\Aurora\DarkAndStormy\PostProcess\PostProcess.cs" />
     <Compile Include="Assets\DevsTestFolder\Sean\TestMaterials\Aurora\Scripts\Camera\MatchEditorCamera.cs" />
+    <Compile Include="Assets\DevsTestFolder\Sean\TestMaterials\Procedural Aurora\Resources\Scripts\AuroraMain.cs" />
+    <Compile Include="Assets\DevsTestFolder\Sean\TestMaterials\Starfield Skybox\Demo\Script\LookCamera.cs" />
+    <Compile Include="Assets\DevsTestFolder\Sean\TestScripts\FPSCount.cs" />
     <Compile Include="Assets\DevsTestFolder\Sean\TestScripts\MEH.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\AudioManager.cs" />
     <Compile Include="Assets\DevsTestFolder\William\TestScripts\ColorManager.cs" />
