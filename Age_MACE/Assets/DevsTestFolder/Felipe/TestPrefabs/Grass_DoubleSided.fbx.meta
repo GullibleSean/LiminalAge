@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4a85aa58570dc024bb40d47b39ef7b02
+guid: 15d78f25cd5a2984cbb23c2f26a676c0
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 05 - Default
+      name: Age_Terrain_Assets_05 - Default
     second: {fileID: 2100000, guid: 7805f02cde847fa488989988fbc3d7eb, type: 2}
   materials:
     importMaterials: 1
@@ -45,8 +45,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -65,7 +65,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
