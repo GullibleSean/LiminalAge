@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   auroraSeed: 0
   auroraParticlesCount: 1000
-  auroraAnimationFrequency: 0.99
+  auroraAnimationFrequency: 0.05
   auroraRotation: 360
   auroraCurvature: 0.01
   auroraSizes: {x: 500, y: 800, z: 2000}
