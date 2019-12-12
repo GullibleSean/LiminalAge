@@ -9,12 +9,11 @@ public class EventHandler : MonoBehaviour
     public MeshRenderer BigTree;
 
     public MeshRenderer grass;
+    public MeshRenderer terrian;
 
     public Material daySky;
     public Light sun;
     public Material nightSky;
-
-    private MeshRenderer[] subGrass;
 
     public ParticleSystem[] rainParticles;
 
@@ -27,13 +26,13 @@ public class EventHandler : MonoBehaviour
     public GameObject auroraParticles;
 
     [SerializeField]
-    Color SummerColor = new Color(1f, 1.0f, 0f);
+    Color SummerColor = new Color(0.2f, 0.6f, 0.2f);
     [SerializeField]
     Color FallColor = new Color(1.0f, 0f, 0f);
     [SerializeField]
     Color WinterColor = new Color(1.0f, 1.0f, 1.0f);
     [SerializeField]
-    Color SpringColor = new Color(0.4f, 1.0f, 0.2f);
+    Color SpringColor = new Color(1.0f, 1.0f, 0.0f);
 
     [SerializeField]
     Color CurrentColor;
@@ -103,8 +102,6 @@ public class EventHandler : MonoBehaviour
     void Start()
     {
         TimeTracker = 0.0f;
-
-        subGrass = grass.GetComponentsInChildren<MeshRenderer>();
 
         STF_Color = (FallColor - SummerColor) / GetComponent<TimeManager>().GetSTFDuration();
         FTW_Color = (WinterColor - FallColor) / GetComponent<TimeManager>().GetFTWDuration();
@@ -218,12 +215,8 @@ public class EventHandler : MonoBehaviour
         {
             leaf.materials[1].color = CurrentColor;
         }
-
+        terrian.material.color = CurrentColor;
         BigTree.materials[0].color = CurrentColor;
         grass.material.color = CurrentColor;
-        foreach (var grass in subGrass)
-        {
-            grass.material.color = CurrentColor;
-        }
     }
 }
