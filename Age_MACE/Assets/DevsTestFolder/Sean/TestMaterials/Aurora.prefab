@@ -47,21 +47,21 @@ MonoBehaviour:
   auroraParticlesCount: 1000
   auroraAnimationFrequency: 0.05
   auroraRotation: 360
-  auroraCurvature: 0.01
+  auroraCurvature: 1
   auroraSizes: {x: 500, y: 800, z: 2000}
   auroraParticleThickness: 100
   auroraVolumetric: 1
-  auroraVolumetricRange: {x: 0.6, y: 0.3}
-  auroraLights: 1
+  auroraVolumetricRange: {x: 0.5, y: 0.3}
+  auroraLights: 0
   auroraLightsCount: 25
-  auroraLightsRange: 1000
+  auroraLightsRange: 2000
   auroraLightsIntesity: 1
   auroraColorMain:
     serializedVersion: 2
-    key0: {r: 0.16927983, g: 0.74264705, b: 0.29186174, a: 0}
-    key1: {r: 0.10726642, g: 0.3954181, b: 0.4705882, a: 0.19215687}
-    key2: {r: 0.014705896, g: 1, b: 0.30689654, a: 0.34509805}
-    key3: {r: 0.1189879, g: 0.77413, b: 0.99050707, a: 1}
+    key0: {r: 0.7411765, g: 0.67175335, b: 0.16862743, a: 0}
+    key1: {r: 0.47058824, g: 0.3523427, b: 0.10588234, a: 0.19215687}
+    key2: {r: 1, g: 0.82375675, b: 0.015686274, a: 0.34509805}
+    key3: {r: 0.99215686, g: 0.9748856, b: 0.117647044, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 1}
     key5: {r: 0, g: 0, b: 0, a: 0.43529412}
     key6: {r: 0, g: 0, b: 0, a: 0.46666667}

@@ -55,7 +55,7 @@ public class ColorManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         TimeTracker = timeManager.GetComponent<TimeManager>().GetCurrentTime();
         if (TimeTracker < Stage1)
