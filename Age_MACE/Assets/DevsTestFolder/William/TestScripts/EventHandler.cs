@@ -200,11 +200,11 @@ public class EventHandler : MonoBehaviour
 
             snowParticleRate -= 10;
             SetParticlesRateOverTime(snowParticles, snowParticleRate);
-
-            fogParticles.SetActive(false);
         }
         else if (TimeTracker < Stage7)
         {
+            fogParticles.SetActive(false);
+
             DisableParticles(snowParticles);
             CurrentColor = SpringColor;
 
