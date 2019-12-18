@@ -12,6 +12,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Age_Terrain_Assets_23 - Default
+    second: {fileID: 2100000, guid: 7ed001e11f025264c8b5dfc5b0702319, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Age_Terrain_Assets_Birch_leaves
+    second: {fileID: 2100000, guid: 6b7cbd10b1b54624aad174204ed5e57d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Birch_leaves
     second: {fileID: 2100000, guid: 6b7cbd10b1b54624aad174204ed5e57d, type: 2}
   materials:
